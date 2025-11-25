@@ -1,0 +1,418 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Sapin Nordmann Premium 2m",
+      "category": "sapins",
+      "subcategory": "naturel",
+      "price": 249,
+      "priceRange": "249-349",
+      "description": "Sapin Nordmann de qualité premium, réputé pour sa beauté et sa longue tenue. Aiguilles douces qui ne piquent pas, parfait pour les familles avec enfants.",
+      "images": [
+        "assets/images/gallery/sapin-nordmann-1.png",
+        "assets/images/gallery/ChristmasTreePro.png"
+      ],
+      "features": [
+        "Hauteur: 180-200cm",
+        "Livraison et installation incluses",
+        "Aiguilles qui ne tombent pas",
+        "Parfum naturel de sapin",
+        "Stand de sapin fourni",
+        "Retrait gratuit après les fêtes"
+      ],
+      "tags": [
+        "premium",
+        "naturel",
+        "familial"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Sapin Épicéa Traditionnel 1,8m",
+      "category": "sapins",
+      "subcategory": "naturel",
+      "price": 149,
+      "priceRange": "149-199",
+      "description": "Le sapin traditionnel par excellence. Parfum intense de résine et forme conique parfaite. Idéal pour une ambiance authentique.",
+      "images": [
+        "assets/images/gallery/sapin-epicea-1.png"
+      ],
+      "features": [
+        "Hauteur: 170-180cm",
+        "Livraison incluse",
+        "Parfum intense",
+        "Forme conique classique",
+        "Support inclus",
+        "Retrait offert"
+      ],
+      "tags": [
+        "traditionnel",
+        "naturel",
+        "parfumé"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Sapin Artificiel Deluxe 2,1m",
+      "category": "sapins",
+      "subcategory": "artificiel",
+      "price": 399,
+      "priceRange": "399-599",
+      "description": "Sapin artificiel haut de gamme ultra-réaliste. Branches denses et aiguilles PE pour un rendu naturel exceptionnel. Réutilisable année après année.",
+      "images": [
+        "assets/images/gallery/sapin-artificiel-1.png"
+      ],
+      "features": [
+        "Hauteur: 210cm",
+        "Matière PE ultra-réaliste",
+        "1200 branches",
+        "Pied métallique stable",
+        "Montage facile (3 parties)",
+        "Garantie 5 ans",
+        "Livraison et montage inclus"
+      ],
+      "tags": [
+        "artificiel",
+        "premium",
+        "durable",
+        "écologique"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Décoration Sapin Thème Or & Blanc",
+      "category": "sapins",
+      "subcategory": "decoration",
+      "price": 199,
+      "priceRange": "199-299",
+      "description": "Pack complet de 80 pièces pour décorer votre sapin dans un style élégant et raffiné. Boules, guirlandes et ornements coordonnés.",
+      "images": [
+        "assets/images/gallery/deco-or-blanc-1.png"
+      ],
+      "features": [
+        "80 pièces assorties",
+        "Boules incassables",
+        "Guirlande perles 5m",
+        "Étoile de cime LED",
+        "Guirlande lumineuse 10m blanc chaud",
+        "Qualité premium"
+      ],
+      "tags": [
+        "decoration",
+        "elegant",
+        "complet"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Décoration Intérieure Cocooning",
+      "category": "interieur",
+      "subcategory": "ambiance",
+      "price": 299,
+      "priceRange": "299-499",
+      "description": "Transformez votre salon en cocon chaleureux avec notre pack décoration intérieure. Guirlandes, coussins, plaids et bougies parfumées.",
+      "images": [
+        "assets/images/gallery/interieur-cocooning-1.png",
+        "assets/images/gallery/ChristmasHouseInterior.png"
+      ],
+      "features": [
+        "Guirlandes LED blanc chaud (20m)",
+        "2 plaids doux motifs Noël",
+        "Coussins déco (x4)",
+        "Bougies parfumées (x6)",
+        "Couronne de porte",
+        "Centre de table lumineux",
+        "Installation incluse"
+      ],
+      "tags": [
+        "interieur",
+        "cocooning",
+        "chaleureux"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Décoration Cheminée Majestueuse",
+      "category": "interieur",
+      "subcategory": "cheminee",
+      "price": 249,
+      "priceRange": "249-349",
+      "description": "Ornez votre cheminée d'une guirlande luxueuse avec pommes de pin, baies rouges et LED intégrées. Effet spectaculaire garanti.",
+      "images": [
+        "assets/images/gallery/cheminee-1.png"
+      ],
+      "features": [
+        "Guirlande 2,5m",
+        "Matériaux naturels premium",
+        "LED intégrées programmables",
+        "Fixations invisibles",
+        "Chaussettes de Noël personnalisables",
+        "Installation professionnelle"
+      ],
+      "tags": [
+        "interieur",
+        "cheminee",
+        "luxe"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Décoration Escalier Féerique",
+      "category": "interieur",
+      "subcategory": "escalier",
+      "price": 199,
+      "priceRange": "199-299",
+      "description": "Sublimez votre escalier avec des guirlandes lumineuses entrelacées de verdure et rubans. Installation sécurisée sur rampe.",
+      "images": [
+        "assets/images/gallery/escalier-1.png"
+      ],
+      "features": [
+        "Guirlandes sur-mesure",
+        "LED blanc chaud (15m)",
+        "Rubans velours rouge",
+        "Fixations sans trace",
+        "Branches de sapin naturelles",
+        "Pose professionnelle"
+      ],
+      "tags": [
+        "interieur",
+        "escalier",
+        "elegant"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Illumination Façade Spectaculaire",
+      "category": "exterieur",
+      "subcategory": "facade",
+      "price": 699,
+      "priceRange": "699-1299",
+      "description": "Transformez votre façade en spectacle lumineux. Guirlandes LED professionnelles avec effets programmables et télécommande.",
+      "images": [
+        "assets/images/gallery/facade-1.jpg",
+        "assets/images/gallery/Illumination Façade Spectaculaire.jpg",
+        "assets/images/gallery/ChristmasHouseExterior.png"
+      ],
+      "features": [
+        "Guirlandes LED pro (jusqu'à 100m)",
+        "8 modes d'animation",
+        "Télécommande + programmateur",
+        "Installation sécurisée toiture",
+        "Câbles invisibles",
+        "Consommation basse énergie",
+        "Retrait inclus"
+      ],
+      "tags": [
+        "exterieur",
+        "facade",
+        "spectaculaire"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Décoration Jardin Enchanté",
+      "category": "exterieur",
+      "subcategory": "jardin",
+      "price": 449,
+      "priceRange": "449-699",
+      "description": "Créez un jardin féerique avec nos éléments lumineux: rennes, sapins LED, stalactites et projections animées.",
+      "images": [
+        "assets/images/gallery/Décoration Jardin Enchanté.jpg",
+        "assets/images/gallery/Décoration Jardin noel.jpg",
+        "assets/images/gallery/jardin-1.jpg",
+        "assets/images/gallery/jardin-2.mp4"
+      ],
+      "features": [
+        "2 rennes lumineux (1,2m)",
+        "3 sapins LED (0,8-1,5m)",
+        "Stalactites LED (10m)",
+        "Projecteur effet neige",
+        "Installation sur piquets",
+        "Résistant intempéries (IP65)",
+        "Programmation automatique"
+      ],
+      "tags": [
+        "exterieur",
+        "jardin",
+        "feerique"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Projection Lumineuse Animée",
+      "category": "exterieur",
+      "subcategory": "projection",
+      "price": 299,
+      "priceRange": "299-499",
+      "description": "Projecteur LED haute définition avec 12 animations de Noël. Flocons, bonhommes de neige, rennes... Effet cinéma sur votre façade.",
+      "images": [
+        "assets/images/gallery/projection-1.jpg"
+      ],
+      "features": [
+        "12 animations HD",
+        "Portée jusqu'à 15m",
+        "Rotation 360°",
+        "Télécommande RF",
+        "Minuteur programmable",
+        "Étanche IP65",
+        "Installation sur piquet ou mur"
+      ],
+      "tags": [
+        "exterieur",
+        "projection",
+        "moderne"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Ambiance Table de Fête Luxe",
+      "category": "ambiances",
+      "subcategory": "table",
+      "price": 189,
+      "priceRange": "189-299",
+      "description": "Centre de table spectaculaire avec chandelier, compositions florales et vaisselle festive pour 8 personnes.",
+      "images": [
+        "assets/images/gallery/table-1.jpg"
+      ],
+      "features": [
+        "Centre de table lumineux",
+        "Compositions florales premium",
+        "Sets de table (x8)",
+        "Ronds de serviette dorés",
+        "Bougies LED",
+        "Décoration assortie"
+      ],
+      "tags": [
+        "ambiances",
+        "table",
+        "reception"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Ambiance Village de Noël Miniature",
+      "category": "ambiances",
+      "subcategory": "decoration",
+      "price": 159,
+      "priceRange": "159-249",
+      "description": "Village miniature animé avec 12 maisonnettes LED, personnages et train électrique. Effet nostalgique garanti.",
+      "images": [
+        "assets/images/gallery/village-1.jpg"
+      ],
+      "features": [
+        "12 maisonnettes illuminées",
+        "Train électrique circulaire",
+        "20 figurines",
+        "Neige artificielle",
+        "Base paysagée (100x60cm)",
+        "Transformateur inclus"
+      ],
+      "tags": [
+        "ambiances",
+        "miniature",
+        "nostalgique"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Pack Complet Maison Féerique",
+      "category": "ambiances",
+      "subcategory": "pack",
+      "price": 1499,
+      "priceRange": "1499-2499",
+      "description": "Le pack ultime : sapin 2,5m décoré + décoration intérieure complète (5 pièces) + illumination extérieure. Clés en main.",
+      "images": [
+        "assets/images/gallery/pack-complet-1.jpg",
+        "assets/images/gallery/Maison Féeriquegénere.jpg"
+      ],
+      "features": [
+        "Sapin premium 2,5m tout décoré",
+        "Décoration 5 pièces intérieur",
+        "Illumination façade complète",
+        "Décoration jardin",
+        "Consultation déco incluse",
+        "Installation intégrale",
+        "Service premium",
+        "Retrait après fêtes"
+      ],
+      "tags": [
+        "ambiances",
+        "pack",
+        "premium",
+        "complet"
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "sapins",
+      "name": "Sapins de Noël",
+      "description": "Sapins naturels et artificiels de qualité premium",
+      "icon": "🎄"
+    },
+    {
+      "id": "interieur",
+      "name": "Décor Intérieur",
+      "description": "Transformez votre intérieur en conte de fées",
+      "icon": "✨"
+    },
+    {
+      "id": "exterieur",
+      "name": "Décor Extérieur",
+      "description": "Illuminez votre façade et jardin",
+      "icon": "🏡"
+    },
+    {
+      "id": "ambiances",
+      "name": "Ambiances Complètes",
+      "description": "Packs et créations sur-mesure",
+      "icon": "🎨"
+    }
+  ],
+  "filters": {
+    "budget": [
+      {
+        "id": "budget-1",
+        "label": "Moins de 200€",
+        "min": 0,
+        "max": 200
+      },
+      {
+        "id": "budget-2",
+        "label": "200€ - 500€",
+        "min": 200,
+        "max": 500
+      },
+      {
+        "id": "budget-3",
+        "label": "500€ - 1000€",
+        "min": 500,
+        "max": 1000
+      },
+      {
+        "id": "budget-4",
+        "label": "Plus de 1000€",
+        "min": 1000,
+        "max": 999999
+      }
+    ],
+    "style": [
+      {
+        "id": "style-traditionnel",
+        "label": "Traditionnel"
+      },
+      {
+        "id": "style-moderne",
+        "label": "Moderne"
+      },
+      {
+        "id": "style-elegant",
+        "label": "Élégant"
+      },
+      {
+        "id": "style-chaleureux",
+        "label": "Chaleureux"
+      }
+    ]
+  }
+}

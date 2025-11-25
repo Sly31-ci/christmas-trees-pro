@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Découvrez nos plus belles réalisations de décoration de Noël - Sapins, intérieur, extérieur">
+    <title>Galerie - Magie de Noël</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <!-- Header identique à index.html -->
+    <header class="header">
+        <div class="header-container">
+            <img src="assets/images/xMas_logo.png" class="logo" alt="Christmas Tree Pros" />
+
+            <nav class="nav" id="mainNav">
+                <a href="index.html">Accueil</a>
+                <a href="gallery.html" class="active">Galerie</a>
+                <a href="services.html">Services</a>
+                <a href="about.html">À propos</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-value" id="days">--</span>
+                    <span class="countdown-label">Jours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="hours">--</span>
+                    <span class="countdown-label">H</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="minutes">--</span>
+                    <span class="countdown-label">Min</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="seconds">--</span>
+                    <span class="countdown-label">Sec</span>
+                </div>
+            </div>
+            <a href="contact.html" class="btn btn-primary">Réserver</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Notre Galerie</h1>
+        <p>Découvrez nos plus belles créations et laissez-vous inspirer</p>
+    </div>
+
+    <!-- Filters -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Tout voir</button>
+                <button class="filter-btn" data-filter="sapins">Sapins</button>
+                <button class="filter-btn" data-filter="interieur">Décor Intérieur</button>
+                <button class="filter-btn" data-filter="exterieur">Décor Extérieur</button>
+                <button class="filter-btn" data-filter="ambiances">Ambiances</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Items générés dynamiquement -->
+            </div>
+            <div class="gallery-load-more">
+                <button class="btn btn-secondary" id="loadMore">Charger plus</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Product -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">×</button>
+            <div class="modal-body">
+                <div class="modal-carousel">
+                    <img id="modalImage" src="" alt="" style="display: block;">
+                    <!-- <video id="modalVideo" controls
+                    style="display: none; width: 100%; aspect-ratio: 4/3; object-fit: cover;">
+                    <source id="modalVideoSource" src="" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture de vidéos.
+                </video> -->
+                    <button class="carousel-prev">‹</button>
+                    <button class="carousel-next">›</button>
+                </div>
+                <div class="modal-info">
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalDescription"></p>
+                    <div class="modal-price" id="modalPrice"></div>
+                    <ul class="modal-features" id="modalFeatures"></ul>
+                    <button class="btn btn-primary">Demander un devis</button>
+                    <button class="btn btn-accent whatsapp-btn">
+                        💬 Contacter via WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Magie de Noël</h3>
+                <p>Spécialistes de la décoration de Noël depuis 2015.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="gallery.html">Galerie</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><img src="assets/images/wired-outline-1676-telephone-call-hand-hover-pinch.svg" alt="Phone"
+                            class="contact-icon"> +33 1 23 45 67 89</li>
+                    <li><img src="assets/images/wired-outline-3095-notification-letter-hover-pinch.svg" alt="Email"
+                            class="contact-icon"> contact@christmastreepros.com</li>
+                    <li><img src="assets/images/wired-outline-18-location-pin-hover-jump.svg" alt="Location"
+                            class="contact-icon"> Ashburn, Virginia, USA</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Christmas Tree Pros. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/gallery.js"></script>
+</body>
+
+</html>
