@@ -47,3 +47,150 @@ Vous verrez un bandeau en haut :
 Cliquez sur le lien fourni (ex: `https://votre-pseudo.github.io/christmas-trees-pro/`).
 
 🎉 **Félicitations ! Votre site est maintenant en ligne et accessible à tous !**
+
+---
+
+## 🔄 Mettre à jour le projet après modifications
+
+Chaque fois que vous modifiez votre site (texte, images, couleurs, etc.), vous devez suivre ces étapes pour envoyer les changements sur GitHub et mettre à jour votre site en ligne.
+
+### Workflow de mise à jour en 3 étapes
+
+#### 1️⃣ Vérifier les modifications
+
+Avant de commencer, vérifiez quels fichiers ont été modifiés :
+
+```bash
+git status
+```
+
+Cette commande vous montrera :
+- Les fichiers modifiés (en rouge)
+- Les fichiers déjà ajoutés pour le prochain commit (en vert)
+- Les nouveaux fichiers non suivis
+
+#### 2️⃣ Ajouter les fichiers modifiés
+
+Vous avez deux options :
+
+**Option A : Ajouter tous les fichiers modifiés** (recommandé si vous voulez tout envoyer)
+```bash
+git add .
+```
+
+**Option B : Ajouter des fichiers spécifiques**
+```bash
+git add index.html
+git add about.html
+git add assets/css/style.css
+```
+
+#### 3️⃣ Créer un commit (snapshot de vos modifications)
+
+Un commit est comme une "photo" de votre projet à un instant T. Donnez-lui un message descriptif :
+
+```bash
+git commit -m "Description de vos modifications"
+```
+
+**Exemples de bons messages de commit :**
+- `"Update contact information and social media links"`
+- `"Add new Christmas tree images to gallery"`
+- `"Fix navigation menu on mobile devices"`
+- `"Update services pricing"`
+
+#### 4️⃣ Envoyer sur GitHub (Push)
+
+Envoyez vos modifications vers GitHub :
+
+```bash
+git push origin main
+```
+
+⏱️ Attendez 1-2 minutes, puis votre site sera automatiquement mis à jour !
+
+### 📝 Exemple complet de mise à jour
+
+Imaginons que vous avez modifié les prix dans `services.html` et ajouté une nouvelle image :
+
+```bash
+# 1. Vérifier ce qui a changé
+git status
+
+# 2. Ajouter tous les fichiers modifiés
+git add .
+
+# 3. Créer un commit avec un message clair
+git commit -m "Update service prices and add new gallery image"
+
+# 4. Envoyer les modifications
+git push origin main
+```
+
+✅ C'est fait ! Votre site sera mis à jour dans 1-2 minutes.
+
+### 🔍 Commandes utiles
+
+| Commande | Description |
+|----------|-------------|
+| `git status` | Voir l'état actuel (fichiers modifiés, ajoutés, etc.) |
+| `git log` | Voir l'historique des commits |
+| `git log --oneline` | Historique compact (1 ligne par commit) |
+| `git diff` | Voir les modifications détaillées avant de commit |
+| `git diff nomfichier.html` | Voir les modifs d'un fichier spécifique |
+
+### ⚠️ Problèmes courants
+
+**Problème : "Your branch is behind origin/main"**
+```bash
+# Récupérer les dernières modifications du serveur
+git pull origin main
+```
+
+**Problème : Conflit après un pull**
+- Ouvrez les fichiers en conflit
+- Recherchez les marqueurs `<<<<<<<`, `=======`, `>>>>>>>`
+- Choisissez quelle version garder
+- Supprimez les marqueurs
+- Puis : `git add .`, `git commit -m "Resolve conflict"`, `git push`
+
+**Problème : "Permission denied" lors du push**
+- Vérifiez que vous êtes bien connecté à GitHub
+- Vérifiez l'URL de votre dépôt : `git remote -v`
+- Si nécessaire, utilisez un Personal Access Token au lieu du mot de passe
+
+### 💡 Bonnes pratiques
+
+1. **Faites des commits réguliers** : Ne travaillez pas pendant des heures sans commit. Faites-en un après chaque fonctionnalité ou correction.
+
+2. **Messages de commit clairs** : Écrivez des messages qui expliquent CE QUE vous avez fait, pas COMMENT.
+   - ✅ Bon : `"Add contact form validation"`
+   - ❌ Mauvais : `"Changed some stuff"`
+
+3. **Testez localement avant de push** : Ouvrez votre site en local (avec Live Server ou équivalent) pour vérifier que tout fonctionne.
+
+4. **Vérifiez avant d'ajouter** : Utilisez `git status` pour voir ce que vous allez envoyer.
+
+5. **Pull avant de push** : Si vous travaillez depuis plusieurs ordinateurs, faites `git pull` avant de commencer à travailler.
+
+### 🚀 Workflow quotidien recommandé
+
+```bash
+# Matin : Récupérer les dernières modifications
+git pull origin main
+
+# Pendant la journée : Après chaque modification importante
+git add .
+git commit -m "Description claire de la modification"
+
+# Soir : Envoyer toutes vos modifications
+git push origin main
+```
+
+---
+
+## 📞 Besoin d'aide ?
+
+- [Documentation Git officielle](https://git-scm.com/doc)
+- [Guide GitHub Pages](https://docs.github.com/pages)
+- [Tutoriel Git interactif](https://learngitbranching.js.org/)
