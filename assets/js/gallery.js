@@ -131,7 +131,8 @@ function createGalleryItem(product, index) {
         <img src="${imageUrl}" alt="${product.name}" loading="lazy">
         <div class="gallery-item-info">
             <h3>${product.name}</h3>
-            <p class="gallery-item-price">${product.price}€</p>
+            <!-- Prix masqué - contactez-nous pour un devis -->
+            <!-- <p class="gallery-item-price">${product.price}€</p> -->
         </div>
     `;
 
@@ -162,12 +163,15 @@ function createGalleryItem(product, index) {
                 font-size: 1.2rem;
                 margin-bottom: 0.5rem;
             }
+            /* Prix masqué - contactez-nous pour un devis */
+            /*
             .gallery-item-price {
                 font-size: 1.5rem;
                 font-weight: 700;
                 color: #D4AF37;
                 margin: 0;
             }
+            */
         `;
         document.head.appendChild(style);
     }
@@ -188,7 +192,8 @@ function openProductModal(product) {
     // Remplir le modal
     document.getElementById('modalTitle').textContent = product.name;
     document.getElementById('modalDescription').textContent = product.description;
-    document.getElementById('modalPrice').textContent = `À partir de ${product.price}€`;
+    // Prix masqué - les clients doivent nous contacter pour un devis personnalisé
+    // document.getElementById('modalPrice').textContent = `À partir de ${product.price}€`;
 
     // Image ou Vidéo
     const modalImage = document.getElementById('modalImage');
@@ -367,11 +372,14 @@ if (!document.getElementById('modal-styles')) {
             font-size: 2rem;
         }
         
+        /* Prix masqué - les clients doivent nous contacter */
+        /*
         .modal-price {
             font-size: 2rem;
             font-weight: 700;
             color: #C41E3A;
         }
+        */
         
         .modal-features {
             list-style: none;
