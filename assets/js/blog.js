@@ -729,7 +729,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Bouton WhatsApp
     whatsappBtn.addEventListener('click', function () {
-        const phoneNumber = '33123456789'; // Remplacez par votre numéro
+        const phoneNumber = '17038562590'; // Numéro WhatsApp Christmas Tree Pros
         const message = encodeURIComponent('Bonjour, je souhaite en savoir plus sur vos services de décoration de Noël.');
         window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
     });

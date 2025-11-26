@@ -292,6 +292,16 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }
     });
+
+    // WhatsApp button in modal
+    const whatsappButtons = document.querySelectorAll('.whatsapp-btn');
+    whatsappButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const phoneNumber = '17038562590'; // Christmas Tree Pros WhatsApp
+            const message = encodeURIComponent('Bonjour, je souhaite en savoir plus sur ce produit.');
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+        });
+    });
 });
 
 // Styles pour le modal (injecter si nécessaire)
