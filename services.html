@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Nos services de décoration de Noël : sapins, intérieur, extérieur, packs et prestations sur-mesure">
-    <title>Nos Services - Magie de Noël</title>
+        content="Our Christmas decoration services: trees, interior, exterior, packages, and custom services">
+    <title>Our Services - Christmas Tree Pros</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/i18n.js"></script>
+
 </head>
 
 <body>
@@ -21,42 +21,42 @@
             <img src="assets/images/xMas_logo.png" class="logo" alt="Christmas Tree Pros" />
 
             <nav class="nav" id="mainNav">
-                <a href="index.html">Accueil</a>
-                <a href="gallery.html">Galerie</a>
-                <a href="services.html" class="active">Services</a>
-                <a href="about.html">À propos</a>
-                <a href="blog.html">Blog</a>
-                <a href="contact.html">Contact</a>
+                <a href="index.html" data-i18n="nav.home">Home</a>
+                <a href="gallery.html" data-i18n="nav.gallery">Gallery</a>
+                <a href="services.html" class="active" data-i18n="nav.services">Services</a>
+                <a href="about.html" data-i18n="nav.about">About</a>
+                <a href="blog.html" data-i18n="nav.blog">Blog</a>
+                <a href="contact.html" data-i18n="nav.contact">Contact</a>
             </nav>
 
             <div class="countdown" id="countdown">
                 <div class="countdown-item">
                     <span class="countdown-value" id="days">--</span>
-                    <span class="countdown-label">Jours</span>
+                    <span class="countdown-label" id="days-label" data-i18n="countdown.days">Days</span>
                 </div>
                 <div class="countdown-item">
                     <span class="countdown-value" id="hours">--</span>
-                    <span class="countdown-label">H</span>
+                    <span class="countdown-label" id="hours-label" data-i18n="countdown.hours">H</span>
                 </div>
                 <div class="countdown-item">
                     <span class="countdown-value" id="minutes">--</span>
-                    <span class="countdown-label">Min</span>
+                    <span class="countdown-label" id="minutes-label" data-i18n="countdown.minutes">Min</span>
                 </div>
                 <div class="countdown-item">
                     <span class="countdown-value" id="seconds">--</span>
-                    <span class="countdown-label">Sec</span>
+                    <span class="countdown-label" id="seconds-label" data-i18n="countdown.seconds">Sec</span>
                 </div>
             </div>
 
-            <a href="contact.html" class="btn btn-primary">Réserver</a>
+            <a href="contact.html" class="btn btn-primary" data-i18n="nav.book">Book Now</a>
             <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
         </div>
     </header>
 
     <!-- Page Header -->
     <div class="page-header">
-        <h1 data-i18n="services.page.title">Nos Services</h1>
-        <p data-i18n="services.page.subtitle">Des prestations complètes pour une magie de Noël sans effort</p>
+        <h1 data-i18n="services.page.title">Our Services</h1>
+        <p data-i18n="services.page.subtitle">Complete services for effortless Christmas magic</p>
     </div>
 
     <!-- Services détaillés -->
@@ -65,88 +65,88 @@
             <div class="services-detail-grid">
                 <div class="service-detail-card">
                     <div class="service-detail-header">
-                        <div class="service-detail-icon"><img src="assets/images/icons8-sapin-de-noël.gif" alt="Sapin">
+                        <div class="service-detail-icon"><img src="assets/images/icons8-sapin-de-noël.gif" alt="Tree">
                         </div>
-                        <h3 class="service-detail-title">Sapins de Noël</h3>
+                        <h3 class="service-detail-title">Christmas Trees</h3>
                     </div>
-                    <p>Sélection, livraison et décoration de sapins naturels ou artificiels premium.</p>
+                    <p>Selection, delivery, and decoration of premium natural or artificial trees.</p>
                     <ul class="service-detail-list">
-                        <li>Choix parmi 15+ variétés de sapins</li>
-                        <li>Livraison et installation à domicile</li>
-                        <li>Décoration complète selon votre style</li>
-                        <li>Entretien et arrosage inclus</li>
-                        <li>Retrait après les fêtes</li>
+                        <li>Choice of 15+ tree varieties</li>
+                        <li>Home delivery and installation</li>
+                        <li>Complete decoration according to your style</li>
+                        <li>Maintenance and watering included</li>
+                        <li>Removal after the holidays</li>
                     </ul>
                     <div class="service-price"
                         style="font-size: 1.2rem; color: var(--color-primary); font-weight: 600;">
-                        Contactez-nous pour un devis personnalisé
+                        Contact us for a custom quote
                     </div>
                     <a href="contact.html" class="btn btn-primary" style="width: 100%;"
-                        data-i18n="services.cta.quote">Demander un devis</a>
+                        data-i18n="services.cta.quote">Request a Quote</a>
                 </div>
 
                 <div class="service-detail-card">
                     <div class="service-detail-header">
                         <div class="service-detail-icon"><img src="assets/images/icons8-etoile.gif" alt=""></div>
-                        <h3 class="service-detail-title">Décoration Intérieure</h3>
+                        <h3 class="service-detail-title">Interior Decoration</h3>
                     </div>
-                    <p>Transformation complète de votre intérieur en ambiance féerique de Noël.</p>
+                    <p>Complete transformation of your interior into a magical Christmas atmosphere.</p>
                     <ul class="service-detail-list">
-                        <li>Guirlandes lumineuses LED</li>
-                        <li>Couronnes et compositions florales</li>
-                        <li>Centre de table et déco murale</li>
-                        <li>Cheminée et escalier décorés</li>
-                        <li>Bougies parfumées premium</li>
+                        <li>LED light garlands</li>
+                        <li>Wreaths and floral arrangements</li>
+                        <li>Centerpieces and wall decor</li>
+                        <li>Fireplace and staircase decoration</li>
+                        <li>Premium scented candles</li>
                     </ul>
                     <div class="service-price"
                         style="font-size: 1.2rem; color: var(--color-primary); font-weight: 600;">
-                        Contactez-nous pour un devis personnalisé
+                        Contact us for a custom quote
                     </div>
                     <a href="contact.html" class="btn btn-primary" style="width: 100%;"
-                        data-i18n="services.cta.quote">Demander un devis</a>
+                        data-i18n="services.cta.quote">Request a Quote</a>
                 </div>
 
                 <div class="service-detail-card">
                     <div class="service-detail-header">
                         <div class="service-detail-icon"><img src="assets/images/icons8-accueil.gif" alt=""></div>
-                        <h3 class="service-detail-title">Décoration Extérieure</h3>
+                        <h3 class="service-detail-title">Exterior Decoration</h3>
                     </div>
-                    <p>Illumination spectaculaire de votre façade, jardin et terrasse.</p>
+                    <p>Spectacular illumination of your facade, garden, and terrace.</p>
                     <ul class="service-detail-list">
-                        <li>Guirlandes LED professionnelles</li>
-                        <li>Projections lumineuses animées</li>
-                        <li>Décoration de jardin et allées</li>
-                        <li>Installation sécurisée sur toiture</li>
-                        <li>Programmation automatique</li>
+                        <li>Professional LED garlands</li>
+                        <li>Animated light projections</li>
+                        <li>Garden and pathway decoration</li>
+                        <li>Secure roof installation</li>
+                        <li>Automatic scheduling</li>
                     </ul>
                     <div class="service-price"
                         style="font-size: 1.2rem; color: var(--color-primary); font-weight: 600;">
-                        Contactez-nous pour un devis personnalisé
+                        Contact us for a custom quote
                     </div>
                     <a href="contact.html" class="btn btn-primary" style="width: 100%;"
-                        data-i18n="services.cta.quote">Demander un devis</a>
+                        data-i18n="services.cta.quote">Request a Quote</a>
                 </div>
 
                 <div class="service-detail-card">
                     <div class="service-detail-header">
                         <div class="service-detail-icon"><img src="assets/images/icons8-palette-de-couleurs.gif" alt="">
                         </div>
-                        <h3 class="service-detail-title">Création Sur-Mesure</h3>
+                        <h3 class="service-detail-title">Custom Creation</h3>
                     </div>
-                    <p>Concept unique adapté à votre style et vos envies personnelles.</p>
+                    <p>Unique concept adapted to your style and personal wishes.</p>
                     <ul class="service-detail-list">
-                        <li>Consultation déco personnalisée</li>
-                        <li>Création de thèmes originaux</li>
-                        <li>Fabrication d'éléments uniques</li>
-                        <li>Coordination couleurs et style</li>
-                        <li>Suivi projet complet</li>
+                        <li>Personalized decor consultation</li>
+                        <li>Creation of original themes</li>
+                        <li>Fabrication of unique elements</li>
+                        <li>Color and style coordination</li>
+                        <li>Complete project follow-up</li>
                     </ul>
                     <div class="service-price"
                         style="font-size: 1.2rem; color: var(--color-primary); font-weight: 600;">
-                        Contactez-nous pour discuter de votre projet
+                        Contact us to discuss your project
                     </div>
                     <a href="contact.html" class="btn btn-primary" style="width: 100%;"
-                        data-i18n="services.cta.discuss">Discutons de votre projet</a>
+                        data-i18n="services.cta.discuss">Let's Discuss Your Project</a>
                 </div>
             </div>
         </div>
@@ -156,70 +156,70 @@
     <section class="packs-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title" data-i18n="services.packs.title">Nos Packs Tout Compris</h2>
-                <p class="section-subtitle">Formules clés en main pour tous les budgets</p>
+                <h2 class="section-title" data-i18n="services.packs.title">Our All-Inclusive Packages</h2>
+                <p class="section-subtitle">Turnkey formulas for all budgets</p>
             </div>
 
             <div class="services-detail-grid">
                 <div class="pack-card">
                     <div class="pack-header">
-                        <div class="pack-badge">ESSENTIEL</div>
-                        <h3 class="pack-name">Pack Douceur</h3>
-                        <div class="pack-price" style="font-size: 1.1rem; color: var(--color-accent);">Devis sur mesure
+                        <div class="pack-badge">ESSENTIAL</div>
+                        <h3 class="pack-name">Sweetness Pack</h3>
+                        <div class="pack-price" style="font-size: 1.1rem; color: var(--color-accent);">Custom Quote
                         </div>
                     </div>
                     <div class="pack-body">
                         <ul class="pack-features">
-                            <li>Sapin naturel 1,5m</li>
-                            <li>Décoration sapin complète</li>
-                            <li>Guirlande lumineuse LED</li>
-                            <li>Livraison et installation</li>
-                            <li>Retrait après fêtes</li>
+                            <li>Natural tree 1.5m</li>
+                            <li>Complete tree decoration</li>
+                            <li>LED light garland</li>
+                            <li>Delivery and installation</li>
+                            <li>Removal after holidays</li>
                         </ul>
-                        <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Choisir ce pack</a>
+                        <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Choose this pack</a>
                     </div>
                 </div>
 
                 <div class="pack-card featured">
                     <div class="pack-header">
-                        <div class="pack-badge">⭐ POPULAIRE</div>
-                        <h3 class="pack-name">Pack Féerie</h3>
-                        <div class="pack-price" style="font-size: 1.1rem; color: var(--color-accent);">Devis sur mesure
+                        <div class="pack-badge">⭐ POPULAR</div>
+                        <h3 class="pack-name">Fairy Pack</h3>
+                        <div class="pack-price" style="font-size: 1.1rem; color: var(--color-accent);">Custom Quote
                         </div>
                     </div>
                     <div class="pack-body">
                         <ul class="pack-features">
-                            <li>Sapin premium 2m décoré</li>
-                            <li>Décoration intérieure complète (2 pièces)</li>
-                            <li>Guirlandes LED intérieur (50m)</li>
-                            <li>Couronnes de porte</li>
-                            <li>Centre de table festif</li>
-                            <li>Installation professionnelle</li>
-                            <li>Retrait inclus</li>
+                            <li>Premium tree 2m decorated</li>
+                            <li>Complete interior decoration (2 rooms)</li>
+                            <li>Interior LED garlands (50m)</li>
+                            <li>Door wreaths</li>
+                            <li>Festive centerpiece</li>
+                            <li>Professional installation</li>
+                            <li>Removal included</li>
                         </ul>
-                        <a href="contact.html" class="btn btn-accent" style="width: 100%;">Choisir ce pack</a>
+                        <a href="contact.html" class="btn btn-accent" style="width: 100%;">Choose this pack</a>
                     </div>
                 </div>
 
                 <div class="pack-card">
                     <div class="pack-header">
                         <div class="pack-badge">PRESTIGE</div>
-                        <h3 class="pack-name">Pack Émeraude</h3>
-                        <div class="pack-price" style="font-size: 1.1rem; color: var(--color-accent);">Devis sur mesure
+                        <h3 class="pack-name">Emerald Pack</h3>
+                        <div class="pack-price" style="font-size: 1.1rem; color: var(--color-accent);">Custom Quote
                         </div>
                     </div>
                     <div class="pack-body">
                         <ul class="pack-features">
-                            <li>Sapin grand luxe 2,5m</li>
-                            <li>Décoration intérieure (5 pièces)</li>
-                            <li>Illumination extérieure complète</li>
-                            <li>Projections lumineuses animées</li>
-                            <li>Décoration jardin et façade</li>
-                            <li>Consultation déco personnalisée</li>
-                            <li>Installation + programmation</li>
-                            <li>Service premium + retrait</li>
+                            <li>Luxury tree 2.5m</li>
+                            <li>Interior decoration (5 rooms)</li>
+                            <li>Complete exterior illumination</li>
+                            <li>Animated light projections</li>
+                            <li>Garden and facade decoration</li>
+                            <li>Personalized decor consultation</li>
+                            <li>Installation + scheduling</li>
+                            <li>Premium service + removal</li>
                         </ul>
-                        <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Choisir ce pack</a>
+                        <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Choose this pack</a>
                     </div>
                 </div>
             </div>
@@ -230,72 +230,71 @@
     <section class="faq-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title" data-i18n="services.faq.title">Questions Fréquentes</h2>
+                <h2 class="section-title" data-i18n="services.faq.title">Frequently Asked Questions</h2>
             </div>
 
             <div class="faq-container">
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Quand faut-il réserver ?</span>
+                        <span>When should I book?</span>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            Nous vous recommandons de réserver dès novembre pour garantir votre créneau préféré. Les
-                            périodes de mi-décembre sont les plus demandées.
+                            We recommend booking as early as November to guarantee your preferred slot. The mid-December
+                            periods are the most requested.
                         </div>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Combien de temps dure l'installation ?</span>
+                        <span>How long does the installation take?</span>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            Entre 2 et 4 heures selon la prestation choisie. Pour les installations extérieures
-                            complexes, comptez une journée complète.
+                            Between 2 and 4 hours depending on the chosen service. For complex exterior installations,
+                            allow a full day.
                         </div>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Proposez-vous le retrait après les fêtes ?</span>
+                        <span>Do you offer removal after the holidays?</span>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            Oui, le retrait est inclus dans tous nos packs et prestations. Nous intervenons généralement
-                            début janvier.
+                            Yes, removal is included in all our packs and services. We generally intervene in early
+                            January.
                         </div>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Peut-on personnaliser les décorations ?</span>
+                        <span>Can we customize the decorations?</span>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            Absolument ! Nous adaptons nos créations à vos couleurs préférées, votre style
-                            (traditionnel, moderne, scandinave...) et vos envies. Une consultation est incluse dans nos
-                            packs premium.
+                            Absolutely! We adapt our creations to your favorite colors, your style (traditional, modern,
+                            Scandinavian...), and your wishes. A consultation is included in our premium packs.
                         </div>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Intervenez-vous en dehors de Paris ?</span>
+                        <span>Do you operate outside of Paris?</span>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            Oui, nous couvrons toute l'Île-de-France. Des frais de déplacement peuvent s'appliquer
-                            au-delà de 50km de Paris. Contactez-nous pour un devis personnalisé.
+                            Yes, we cover the entire Île-de-France region. Travel fees may apply beyond 50km from Paris.
+                            Contact us for a custom quote.
                         </div>
                     </div>
                 </div>
@@ -306,9 +305,9 @@
     <!-- CTA -->
     <section class="cta-section">
         <div class="container">
-            <h2 class="section-title" data-i18n="services.cta.ready">Prêt à Réserver ?</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Demandez votre devis gratuit en 2 minutes</p>
-            <a href="contact.html" class="btn btn-accent" data-i18n="services.cta.button">Obtenir mon devis gratuit</a>
+            <h2 class="section-title" data-i18n="services.cta.ready">Ready to Book?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Get your free quote in 2 minutes</p>
+            <a href="contact.html" class="btn btn-accent" data-i18n="services.cta.button">Get My Free Quote</a>
         </div>
     </section>
 
@@ -316,14 +315,14 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Magie de Noël</h3>
-                <p>Spécialistes de la décoration de Noël depuis 2015.</p>
+                <h3>Christmas Tree Pros</h3>
+                <p>Christmas decoration specialists since 2015.</p>
             </div>
             <div class="footer-section">
                 <h3>Navigation</h3>
                 <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="gallery.html">Galerie</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
@@ -340,7 +339,7 @@
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Suivez-nous</h3>
+                <h3>Follow Us</h3>
                 <ul>
                     <li><a href="https://www.facebook.com/people/Christmas-Tree-Pros/61583618916568/?locale=fr_FR"
                             target="_blank">Facebook</a></li>
@@ -351,7 +350,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Christmas Tree Pros. Tous droits réservés.</p>
+            <p>&copy; 2024 Christmas Tree Pros. All rights reserved.</p>
         </div>
     </footer>
 

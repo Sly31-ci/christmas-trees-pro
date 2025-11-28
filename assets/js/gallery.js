@@ -1,5 +1,5 @@
 // ========================================
-// GALLERY.JS - Galerie Filtrable avec Lazy Load
+// GALLERY.JS - Filterable Gallery with Lazy Load
 // ========================================
 
 // Configuration
@@ -8,7 +8,7 @@ let currentPage = 1;
 let currentFilter = 'all';
 let allProducts = [];
 
-// Charger les données
+// Load data
 async function loadProducts() {
     try {
         const response = await fetch('assets/data/products.json');
@@ -16,33 +16,33 @@ async function loadProducts() {
         allProducts = data.products;
         renderGallery();
     } catch (error) {
-        console.error('Erreur chargement produits:', error);
-        // Fallback avec données simulées
+        console.error('Error loading products:', error);
+        // Fallback with mock data
         allProducts = generateMockProducts();
         renderGallery();
     }
 }
 
-// Générer des produits simulés en cas d'erreur de chargement
+// Generate mock products in case of loading error
 function generateMockProducts() {
-    const categories = ['sapins', 'interieur', 'exterieur', 'ambiances'];
+    const categories = ['trees', 'interior', 'exterior', 'ambiance'];
     const products = [];
 
     for (let i = 1; i <= 20; i++) {
         const category = categories[Math.floor(Math.random() * categories.length)];
         products.push({
             id: i,
-            name: `Produit ${i}`,
+            name: `Product ${i}`,
             category: category,
             price: Math.floor(Math.random() * 500) + 100,
-            description: `Description du produit ${i}`,
+            description: `Description of product ${i}`,
             images: [
-                `data:image/svg+xml,%3Csvg width='400' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Crect fill='%23${Math.floor(Math.random() * 16777215).toString(16)}' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='white' text-anchor='middle' dominant-baseline='middle'%3EProduit ${i}%3C/text%3E%3C/svg%3E`
+                `data:image/svg+xml,%3Csvg width='400' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Crect fill='%23${Math.floor(Math.random() * 16777215).toString(16)}' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='white' text-anchor='middle' dominant-baseline='middle'%3EProduct ${i}%3C/text%3E%3C/svg%3E`
             ],
             features: [
-                'Caractéristique 1',
-                'Caractéristique 2',
-                'Caractéristique 3'
+                'Feature 1',
+                'Feature 2',
+                'Feature 3'
             ]
         });
     }
@@ -50,12 +50,12 @@ function generateMockProducts() {
     return products;
 }
 
-// Filtrer les produits
+// Filter products
 function filterProducts(filter) {
     currentFilter = filter;
     currentPage = 1;
 
-    // Mettre à jour l'UI des filtres
+    // Update filter UI
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
         if (btn.dataset.filter === filter) {
@@ -66,7 +66,7 @@ function filterProducts(filter) {
     renderGallery();
 }
 
-// Obtenir les produits filtrés
+// Get filtered products
 function getFilteredProducts() {
     if (currentFilter === 'all') {
         return allProducts;
@@ -74,7 +74,7 @@ function getFilteredProducts() {
     return allProducts.filter(product => product.category === currentFilter);
 }
 
-// Render galerie
+// Render gallery
 function renderGallery() {
     const galleryGrid = document.getElementById('galleryGrid');
     if (!galleryGrid) return;
@@ -84,16 +84,16 @@ function renderGallery() {
     const endIndex = currentPage * ITEMS_PER_PAGE;
     const productsToShow = filteredProducts.slice(startIndex, endIndex);
 
-    // Vider la grille
+    // Clear grid
     galleryGrid.innerHTML = '';
 
-    // Ajouter les produits
+    // Add products
     productsToShow.forEach((product, index) => {
         const item = createGalleryItem(product, index);
         galleryGrid.appendChild(item);
     });
 
-    // Gérer le bouton "Charger plus"
+    // Handle "Load more" button
     const loadMoreBtn = document.getElementById('loadMore');
     if (loadMoreBtn) {
         if (endIndex >= filteredProducts.length) {
@@ -103,7 +103,7 @@ function renderGallery() {
         }
     }
 
-    // Animer l'apparition
+    // Animate appearance
     setTimeout(() => {
         document.querySelectorAll('.gallery-item').forEach((item, i) => {
             setTimeout(() => {
@@ -114,7 +114,7 @@ function renderGallery() {
     }, 10);
 }
 
-// Créer un élément de galerie
+// Create gallery item
 function createGalleryItem(product, index) {
     const item = document.createElement('div');
     item.className = 'gallery-item';
@@ -131,12 +131,12 @@ function createGalleryItem(product, index) {
         <img src="${imageUrl}" alt="${product.name}" loading="lazy">
         <div class="gallery-item-info">
             <h3>${product.name}</h3>
-            <!-- Prix masqué - contactez-nous pour un devis -->
+            <!-- Price hidden - contact us for a quote -->
             <!-- <p class="gallery-item-price">${product.price}€</p> -->
         </div>
     `;
 
-    // Ajouter styles inline pour l'info
+    // Add inline styles for info
     const style = document.createElement('style');
     if (!document.getElementById('gallery-item-styles')) {
         style.id = 'gallery-item-styles';
@@ -163,7 +163,7 @@ function createGalleryItem(product, index) {
                 font-size: 1.2rem;
                 margin-bottom: 0.5rem;
             }
-            /* Prix masqué - contactez-nous pour un devis */
+            /* Price hidden - contact us for a quote */
             /*
             .gallery-item-price {
                 font-size: 1.5rem;
@@ -176,7 +176,7 @@ function createGalleryItem(product, index) {
         document.head.appendChild(style);
     }
 
-    // Événement clic
+    // Click event
     item.addEventListener('click', () => {
         openProductModal(product);
     });
@@ -184,36 +184,36 @@ function createGalleryItem(product, index) {
     return item;
 }
 
-// Ouvrir modal produit
+// Open product modal
 function openProductModal(product) {
     const modal = document.getElementById('productModal');
     if (!modal) return;
 
-    // Remplir le modal
+    // Fill modal
     document.getElementById('modalTitle').textContent = product.name;
     document.getElementById('modalDescription').textContent = product.description;
-    // Prix masqué - les clients doivent nous contacter pour un devis personnalisé
-    // document.getElementById('modalPrice').textContent = `À partir de ${product.price}€`;
+    // Price hidden - clients must contact us for a personalized quote
+    // document.getElementById('modalPrice').textContent = `From ${product.price}€`;
 
-    // Image ou Vidéo
+    // Image or Video
     const modalImage = document.getElementById('modalImage');
     // const modalVideo = document.getElementById('modalVideo');
     // const modalVideoSource = document.getElementById('modalVideoSource');
 
     if (product.images && product.images.length > 0) {
-        // Chercher d'abord une vidéo dans le tableau d'images
+        // First check for a video in the images array
         // const videoFile = product.images.find(img =>
         //     img.toLowerCase().endsWith('.mp4') || img.toLowerCase().endsWith('.webm')
         // );
 
         // if (videoFile) {
-        //     // Afficher la vidéo
+        //     // Show video
         //     modalImage.style.display = 'none';
         //     modalVideo.style.display = 'block';
         //     modalVideoSource.src = videoFile;
-        //     modalVideo.load(); // Recharger la vidéo
+        //     modalVideo.load(); // Reload video
         // } else {
-        // Afficher la première image
+        // Show first image
         // modalVideo.style.display = 'none';
         modalImage.style.display = 'block';
         modalImage.src = product.images[0];
@@ -229,19 +229,19 @@ function openProductModal(product) {
             .join('');
     }
 
-    // Ouvrir le modal
+    // Open modal
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
 
-// Fermer modal
+// Close modal
 function closeModal() {
     const modal = document.getElementById('productModal');
     if (modal) {
         modal.style.display = 'none';
         document.body.style.overflow = '';
 
-        // Arrêter la vidéo si elle est en cours de lecture
+        // Stop video if playing
         // const modalVideo = document.getElementById('modalVideo');
         // if (modalVideo) {
         //     modalVideo.pause();
@@ -252,17 +252,17 @@ function closeModal() {
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
-    // Charger les produits
+    // Load products
     loadProducts();
 
-    // Filtres
+    // Filters
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             filterProducts(btn.dataset.filter);
         });
     });
 
-    // Bouton "Charger plus"
+    // "Load more" button
     const loadMoreBtn = document.getElementById('loadMore');
     if (loadMoreBtn) {
         loadMoreBtn.addEventListener('click', () => {
@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Escape key pour fermer
+    // Escape key to close
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeModal();
@@ -298,13 +298,13 @@ document.addEventListener('DOMContentLoaded', () => {
     whatsappButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             const phoneNumber = '17038562590'; // Christmas Tree Pros WhatsApp
-            const message = encodeURIComponent('Bonjour, je souhaite en savoir plus sur ce produit.');
+            const message = encodeURIComponent('Hello, I would like to know more about this product.');
             window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
         });
     });
 });
 
-// Styles pour le modal (injecter si nécessaire)
+// Styles for modal (inject if necessary)
 if (!document.getElementById('modal-styles')) {
     const modalStyles = document.createElement('style');
     modalStyles.id = 'modal-styles';
@@ -382,7 +382,7 @@ if (!document.getElementById('modal-styles')) {
             font-size: 2rem;
         }
         
-        /* Prix masqué - les clients doivent nous contacter */
+        /* Price hidden - clients must contact us */
         /*
         .modal-price {
             font-size: 2rem;
@@ -424,7 +424,7 @@ if (!document.getElementById('modal-styles')) {
     document.head.appendChild(modalStyles);
 }
 
-// Export pour utilisation éventuelle
+// Export for potential use
 window.galleryFunctions = {
     loadProducts,
     filterProducts,

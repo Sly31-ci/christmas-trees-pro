@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Conseils, astuces et tendances décoration de Noël. Blog Christmas Tree Pros.">
+    <meta name="description" content="Tips, tricks, and Christmas decoration trends. Christmas Tree Pros Blog.">
     <title>Blog - Christmas Tree Pros</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/i18n.js"></script>
+
 </head>
 
 <body>
@@ -20,43 +20,43 @@
             <img src="assets/images/xMas_logo.png" class="logo" alt="Christmas Tree Pros" />
 
             <nav class="nav" id="mainNav">
-                <a href="index.html">Accueil</a>
-                <a href="gallery.html">Galerie</a>
-                <a href="services.html">Services</a>
-                <a href="about.html">À propos</a>
-                <a href="blog.html" class="active">Blog</a>
-                <a href="contact.html">Contact</a>
+                <a href="index.html" data-i18n="nav.home">Home</a>
+                <a href="gallery.html" data-i18n="nav.gallery">Gallery</a>
+                <a href="services.html" data-i18n="nav.services">Services</a>
+                <a href="about.html" data-i18n="nav.about">About</a>
+                <a href="blog.html" class="active" data-i18n="nav.blog">Blog</a>
+                <a href="contact.html" data-i18n="nav.contact">Contact</a>
             </nav>
 
 
             <div class="countdown" id="countdown">
                 <div class="countdown-item">
                     <span class="countdown-value" id="days">--</span>
-                    <span class="countdown-label">Jours</span>
+                    <span class="countdown-label" id="days-label" data-i18n="countdown.days">Days</span>
                 </div>
                 <div class="countdown-item">
                     <span class="countdown-value" id="hours">--</span>
-                    <span class="countdown-label">H</span>
+                    <span class="countdown-label" id="hours-label" data-i18n="countdown.hours">H</span>
                 </div>
                 <div class="countdown-item">
                     <span class="countdown-value" id="minutes">--</span>
-                    <span class="countdown-label">Min</span>
+                    <span class="countdown-label" id="minutes-label" data-i18n="countdown.minutes">Min</span>
                 </div>
                 <div class="countdown-item">
                     <span class="countdown-value" id="seconds">--</span>
-                    <span class="countdown-label">Sec</span>
+                    <span class="countdown-label" id="seconds-label" data-i18n="countdown.seconds">Sec</span>
                 </div>
             </div>
 
-            <a href="contact.html" class="btn btn-primary">Réserver</a>
+            <a href="contact.html" class="btn btn-primary" data-i18n="nav.book">Book Now</a>
             <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
         </div>
     </header>
 
     <!-- Page Header -->
     <div class="page-header">
-        <h1 data-i18n="blog.page.title">Blog & Conseils</h1>
-        <p data-i18n="blog.page.subtitle">Astuces, tendances et inspirations pour un Noël magique</p>
+        <h1 data-i18n="blog.page.title">Blog & Tips</h1>
+        <p data-i18n="blog.page.subtitle">Tips, trends, and inspiration for a magical Christmas</p>
     </div>
 
     <!-- Blog Section -->
@@ -64,110 +64,107 @@
         <div class="container">
             <div class="blog-grid">
                 <article class="blog-card">
-                    <img src="data:image/svg+xml,%3Csvg width='400' height='250' xmlns='http://www.w3.org/2000/svg'%3E%3Crect fill='%23C41E3A' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' font-size='20' fill='white' text-anchor='middle' dominant-baseline='middle'%3EChoisir son Sapin%3C/text%3E%3C/svg%3E"
-                        alt="Choisir son sapin" class="blog-image">
+                    <img src="data:image/svg+xml,%3Csvg width='400' height='250' xmlns='http://www.w3.org/2000/svg'%3E%3Crect fill='%23C41E3A' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' font-size='20' fill='white' text-anchor='middle' dominant-baseline='middle'%3EChoosing Your Tree%3C/text%3E%3C/svg%3E"
+                        alt="Choosing your tree" class="blog-image">
                     <div class="blog-content">
-                        <span class="blog-category">Conseils</span>
-                        <h3 class="blog-title">Comment Choisir le Sapin Parfait ?</h3>
+                        <span class="blog-category">Tips</span>
+                        <h3 class="blog-title">How to Choose the Perfect Tree?</h3>
                         <div class="blog-meta">
-                            <span class="blog-meta-item">📅 10 Nov 2024</span>
+                            <span class="blog-meta-item">📅 Nov 10, 2024</span>
                             <span class="blog-meta-item">⏱️ 4 min</span>
                         </div>
                         <p class="blog-excerpt">
-                            Nordmann, Épicéa ou artificiel ? Taille, forme, entretien... Tous nos conseils pour faire le
-                            bon choix.
+                            Nordmann, Spruce, or artificial? Size, shape, maintenance... All our tips to make the right
+                            choice.
                         </p>
-                        <a href="#" class="blog-read-more" data-i18n="blog.readmore">Lire plus</a>
+                        <a href="#" class="blog-read-more" data-i18n="blog.readmore">Read more</a>
                     </div>
                 </article>
 
                 <article class="blog-card">
-                    <img src="data:image/svg+xml,%3Csvg width='400' height='250' xmlns='http://www.w3.org/2000/svg'%3E%3Crect fill='%23D4AF37' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' font-size='20' fill='white' text-anchor='middle' dominant-baseline='middle'%3EDIY Décorations%3C/text%3E%3C/svg%3E"
+                    <img src="data:image/svg+xml,%3Csvg width='400' height='250' xmlns='http://www.w3.org/2000/svg'%3E%3Crect fill='%23D4AF37' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' font-size='20' fill='white' text-anchor='middle' dominant-baseline='middle'%3EDIY Decorations%3C/text%3E%3C/svg%3E"
                         alt="DIY" class="blog-image">
                     <div class="blog-content">
                         <span class="blog-category">DIY</span>
-                        <h3 class="blog-title">5 Décorations DIY Faciles à Réaliser</h3>
+                        <h3 class="blog-title">5 Easy DIY Decorations</h3>
                         <div class="blog-meta">
-                            <span class="blog-meta-item">📅 5 Nov 2024</span>
+                            <span class="blog-meta-item">📅 Nov 5, 2024</span>
                             <span class="blog-meta-item">⏱️ 6 min</span>
                         </div>
                         <p class="blog-excerpt">
-                            Créez vos propres décorations avec des matériaux simples. Couronnes, centres de table,
-                            ornements personnalisés...
+                            Create your own decorations with simple materials. Wreaths, centerpieces, personalized
+                            ornaments...
                         </p>
-                        <a href="#" class="blog-read-more">Lire plus</a>
+                        <a href="#" class="blog-read-more" data-i18n="blog.readmore">Read more</a>
                     </div>
                 </article>
 
                 <article class="blog-card">
-                    <img src="data:image/svg+xml,%3Csvg width='400' height='250' xmlns='http://www.w3.org/2000/svg'%3E%3Crect fill='%232D5016' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' font-size='18' fill='%23D4AF37' text-anchor='middle' dominant-baseline='middle'%3EÉclairage Extérieur%3C/text%3E%3C/svg%3E"
-                        alt="Éclairage" class="blog-image">
+                    <img src="data:image/svg+xml,%3Csvg width='400' height='250' xmlns='http://www.w3.org/2000/svg'%3E%3Crect fill='%232D5016' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' font-size='18' fill='%23D4AF37' text-anchor='middle' dominant-baseline='middle'%3EExterior Lighting%3C/text%3E%3C/svg%3E"
+                        alt="Lighting" class="blog-image">
                     <div class="blog-content">
                         <span class="blog-category">Guide</span>
-                        <h3 class="blog-title">Guide Éclairage Extérieur de Noël</h3>
+                        <h3 class="blog-title">Christmas Exterior Lighting Guide</h3>
                         <div class="blog-meta">
-                            <span class="blog-meta-item">📅 1 Nov 2024</span>
+                            <span class="blog-meta-item">📅 Nov 1, 2024</span>
                             <span class="blog-meta-item">⏱️ 7 min</span>
                         </div>
                         <p class="blog-excerpt">
-                            Types de guirlandes, installation sécurisée, consommation énergétique... Tout ce qu'il faut
-                            savoir.
+                            Types of garlands, secure installation, energy consumption... Everything you need to know.
                         </p>
-                        <a href="#" class="blog-read-more">Lire plus</a>
+                        <a href="#" class="blog-read-more" data-i18n="blog.readmore">Read more</a>
                     </div>
                 </article>
 
                 <article class="blog-card">
-                    <img src="data:image/svg+xml,%3Csvg width='400' height='250' xmlns='http://www.w3.org/2000/svg'%3E%3Crect fill='%23C41E3A' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' font-size='20' fill='white' text-anchor='middle' dominant-baseline='middle'%3ENoël Éco-Responsable%3C/text%3E%3C/svg%3E"
-                        alt="Écologie" class="blog-image">
+                    <img src="data:image/svg+xml,%3Csvg width='400' height='250' xmlns='http://www.w3.org/2000/svg'%3E%3Crect fill='%23C41E3A' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' font-size='20' fill='white' text-anchor='middle' dominant-baseline='middle'%3EEco-Friendly Christmas%3C/text%3E%3C/svg%3E"
+                        alt="Ecology" class="blog-image">
                     <div class="blog-content">
-                        <span class="blog-category">Écologie</span>
-                        <h3 class="blog-title">Un Noël Éco-Responsable</h3>
+                        <span class="blog-category">Ecology</span>
+                        <h3 class="blog-title">An Eco-Friendly Christmas</h3>
                         <div class="blog-meta">
-                            <span class="blog-meta-item">📅 28 Oct 2024</span>
+                            <span class="blog-meta-item">📅 Oct 28, 2024</span>
                             <span class="blog-meta-item">⏱️ 5 min</span>
                         </div>
                         <p class="blog-excerpt">
-                            Sapins recyclables, décorations durables, LED basse consommation... Fêtez Noël en respectant
-                            la planète.
+                            Recyclable trees, sustainable decorations, low-consumption LEDs... Celebrate Christmas while
+                            respecting the planet.
                         </p>
-                        <a href="#" class="blog-read-more">Lire plus</a>
+                        <a href="#" class="blog-read-more" data-i18n="blog.readmore">Read more</a>
                     </div>
                 </article>
 
                 <article class="blog-card">
-                    <img src="data:image/svg+xml,%3Csvg width='400' height='250' xmlns='http://www.w3.org/2000/svg'%3E%3Crect fill='%23D4AF37' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' font-size='20' fill='%231a1a1a' text-anchor='middle' dominant-baseline='middle'%3ETable de Fête%3C/text%3E%3C/svg%3E"
+                    <img src="data:image/svg+xml,%3Csvg width='400' height='250' xmlns='http://www.w3.org/2000/svg'%3E%3Crect fill='%23D4AF37' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' font-size='20' fill='%231a1a1a' text-anchor='middle' dominant-baseline='middle'%3EFestive Table%3C/text%3E%3C/svg%3E"
                         alt="Table" class="blog-image">
                     <div class="blog-content">
                         <span class="blog-category">Inspiration</span>
-                        <h3 class="blog-title">Dresser une Table de Noël Élégante</h3>
+                        <h3 class="blog-title">Setting an Elegant Christmas Table</h3>
                         <div class="blog-meta">
-                            <span class="blog-meta-item">📅 22 Oct 2024</span>
+                            <span class="blog-meta-item">📅 Oct 22, 2024</span>
                             <span class="blog-meta-item">⏱️ 4 min</span>
                         </div>
                         <p class="blog-excerpt">
-                            Vaisselle, décorations, centre de table... Toutes nos idées pour une table de fête
-                            inoubliable.
+                            Tableware, decorations, centerpieces... All our ideas for an unforgettable festive table.
                         </p>
-                        <a href="#" class="blog-read-more">Lire plus</a>
+                        <a href="#" class="blog-read-more" data-i18n="blog.readmore">Read more</a>
                     </div>
                 </article>
 
                 <article class="blog-card">
-                    <img src="data:image/svg+xml,%3Csvg width='400' height='250' xmlns='http://www.w3.org/2000/svg'%3E%3Crect fill='%232D5016' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' font-size='18' fill='white' text-anchor='middle' dominant-baseline='middle'%3ETendances 2024%3C/text%3E%3C/svg%3E"
-                        alt="Tendances" class="blog-image">
+                    <img src="data:image/svg+xml,%3Csvg width='400' height='250' xmlns='http://www.w3.org/2000/svg'%3E%3Crect fill='%232D5016' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' font-size='18' fill='white' text-anchor='middle' dominant-baseline='middle'%3ETrends 2024%3C/text%3E%3C/svg%3E"
+                        alt="Trends" class="blog-image">
                     <div class="blog-content">
-                        <span class="blog-category">Tendances</span>
-                        <h3 class="blog-title">Les Tendances Déco Noël 2024</h3>
+                        <span class="blog-category">Trends</span>
+                        <h3 class="blog-title">Christmas Decor Trends 2024</h3>
                         <div class="blog-meta">
-                            <span class="blog-meta-item">📅 15 Oct 2024</span>
+                            <span class="blog-meta-item">📅 Oct 15, 2024</span>
                             <span class="blog-meta-item">⏱️ 5 min</span>
                         </div>
                         <p class="blog-excerpt">
-                            Couleurs, styles, matériaux... Découvrez les grandes tendances de cette année pour une déco
-                            au goût du jour.
+                            Colors, styles, materials... Discover this year's major trends for up-to-date decor.
                         </p>
-                        <a href="#" class="blog-read-more">Lire plus</a>
+                        <a href="#" class="blog-read-more" data-i18n="blog.readmore">Read more</a>
                     </div>
                 </article>
             </div>
@@ -179,11 +176,11 @@
         <div class="container">
             <div style="max-width: 600px; margin: 0 auto; text-align: center;">
                 <h2 class="section-title" data-i18n="blog.newsletter.title">📬 Newsletter</h2>
-                <p class="section-subtitle" data-i18n="blog.newsletter.subtitle">Recevez nos derniers articles, conseils
-                    et offres exclusives</p>
+                <p class="section-subtitle" data-i18n="blog.newsletter.subtitle">Receive our latest articles, tips, and
+                    exclusive offers</p>
                 <form class="newsletter-form">
-                    <input type="email" placeholder="Votre email" required data-i18n="blog.newsletter.placeholder">
-                    <button type="submit" class="btn btn-primary" data-i18n="blog.newsletter.button">S'inscrire</button>
+                    <input type="email" placeholder="Your email" required data-i18n="blog.newsletter.placeholder">
+                    <button type="submit" class="btn btn-primary" data-i18n="blog.newsletter.button">Subscribe</button>
                 </form>
             </div>
         </div>
@@ -201,11 +198,11 @@
                 </div>
                 <img id="modalBlogImage" src="" alt="" class="blog-modal-image">
                 <div class="blog-modal-text" id="modalBlogContent">
-                    <!-- Le contenu détaillé sera inséré ici -->
+                    <!-- Detailed content will be inserted here -->
                 </div>
                 <div class="blog-modal-footer">
                     <button class="btn btn-accent whatsapp-btn" id="blogWhatsappBtn">
-                        💬 Contacter via WhatsApp
+                        💬 Contact via WhatsApp
                     </button>
                 </div>
             </div>
@@ -218,20 +215,21 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Christmas Tree Pros</h3>
-                <p>Spécialistes de la décoration de Noël depuis 2015.</p>
+                <p data-i18n="footer.company.desc">Christmas decoration specialists since 2015. Wonder and
+                    professionalism guaranteed.</p>
             </div>
             <div class="footer-section">
-                <h3>Navigation</h3>
+                <h3 data-i18n="footer.navigation">Navigation</h3>
                 <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="gallery.html">Galerie</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="about.html">À propos</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                    <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+                    <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                    <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Contact</h3>
+                <h3 data-i18n="footer.contact">Contact</h3>
                 <ul>
                     <li><img src="assets/images/wired-outline-1676-telephone-call-hand-hover-pinch.svg" alt="Phone"
                             class="contact-icon"> +1(703)8562590</li>
@@ -242,7 +240,7 @@
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Suivez-nous</h3>
+                <h3 data-i18n="footer.follow">Follow Us</h3>
                 <ul>
                     <li><a href="https://www.facebook.com/people/Christmas-Tree-Pros/61583618916568/?locale=fr_FR"
                             target="_blank">Facebook</a></li>
@@ -253,7 +251,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Christmas Tree Pros. Tous droits réservés.</p>
+            <p data-i18n="footer.rights">&copy; 2024 Christmas Tree Pros. All rights reserved.</p>
         </div>
     </footer>
 

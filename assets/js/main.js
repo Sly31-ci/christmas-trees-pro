@@ -1,27 +1,88 @@
 // ========================================
-// MAIN.JS - Script Principal
+// MAIN.JS - Main Script
 // ========================================
 
-// Note: Countdown is now handled by i18n.js
+// Note: Countdown logic migrated from i18n.js
+
+// === COUNTDOWN ===
+function updateCountdown() {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+
+    // Target: December 25 at 00:00:00 in user's local timezone
+    let christmas = new Date(currentYear, 11, 25, 0, 0, 0);
+
+    // If Christmas has passed this year, target next year
+    if (now > christmas) {
+        christmas = new Date(currentYear + 1, 11, 25, 0, 0, 0);
+    }
+
+    const diff = christmas - now;
+
+    const countdownElement = document.getElementById('countdown');
+
+    if (!countdownElement) return;
+
+    if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+
+        if (daysEl) daysEl.textContent = days.toString().padStart(2, '0');
+        if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+        if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+        if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+
+        // Static labels in English
+        const labelsMap = {
+            'days-label': 'Days',
+            'hours-label': 'H',
+            'minutes-label': 'Min',
+            'seconds-label': 'Sec'
+        };
+
+        Object.entries(labelsMap).forEach(([id, text]) => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = text;
+        });
+    } else {
+        // Christmas is here!
+        countdownElement.innerHTML = `<div style="font-size: 1.2rem; font-weight: 700;">🎄 Merry Christmas! 🎅</div>`;
+    }
+}
+
+// Initialize countdown
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('countdown')) {
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    }
+});
 
 // === MOBILE MENU ===
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mainNav = document.getElementById('mainNav');
 
 if (mobileMenuBtn && mainNav) {
-    // Create mobile Réserver button
+    // Create mobile Book button
     const mobileReserverBtn = document.createElement('a');
     mobileReserverBtn.href = 'contact.html';
     mobileReserverBtn.className = 'btn btn-primary';
     mobileReserverBtn.setAttribute('data-i18n', 'nav.book');
-    mobileReserverBtn.textContent = window.ChristmasI18n ? window.ChristmasI18n.t('nav.book') : 'Réserver';
+    mobileReserverBtn.textContent = window.ChristmasI18n ? window.ChristmasI18n.t('nav.book') : 'Book Now';
     mobileReserverBtn.style.cssText = 'margin-top: 1rem; width: 100%; text-align: center;';
 
     mobileMenuBtn.addEventListener('click', () => {
         mainNav.classList.toggle('mobile-open');
         mobileMenuBtn.textContent = mainNav.classList.contains('mobile-open') ? '✕' : '☰';
 
-        // Add Réserver button when menu opens
+        // Add Book button when menu opens
         if (mainNav.classList.contains('mobile-open')) {
             if (!mainNav.querySelector('.btn-primary')) {
                 mainNav.appendChild(mobileReserverBtn);
@@ -29,7 +90,7 @@ if (mobileMenuBtn && mainNav) {
         }
     });
 
-    // Fermer le menu au clic sur un lien
+    // Close menu when clicking a link
     mainNav.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             mainNav.classList.remove('mobile-open');
@@ -37,7 +98,7 @@ if (mobileMenuBtn && mainNav) {
         });
     });
 
-    // Close menu when clicking Réserver button
+    // Close menu when clicking Book button
     mobileReserverBtn.addEventListener('click', () => {
         mainNav.classList.remove('mobile-open');
         mobileMenuBtn.textContent = '☰';
@@ -62,7 +123,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observer toutes les sections
+// Observe all sections
 document.querySelectorAll('.section').forEach(section => {
     observer.observe(section);
 });
@@ -106,7 +167,7 @@ if (document.querySelector('.testimonial')) {
         }
     }
 
-    // Navigation par dots
+    // Navigation by dots
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => showTestimonial(index));
     });
@@ -124,7 +185,7 @@ const lightboxImage = document.getElementById('lightboxImage');
 const lightboxClose = document.getElementById('lightboxClose');
 
 if (lightbox && lightboxImage) {
-    // Ouvrir lightbox
+    // Open lightbox
     document.querySelectorAll('.realisation-card').forEach(card => {
         card.addEventListener('click', () => {
             const img = card.querySelector('img');
@@ -137,7 +198,7 @@ if (lightbox && lightboxImage) {
         });
     });
 
-    // Fermer lightbox
+    // Close lightbox
     if (lightboxClose) {
         lightboxClose.addEventListener('click', () => {
             lightbox.classList.remove('active');
@@ -145,7 +206,7 @@ if (lightbox && lightboxImage) {
         });
     }
 
-    // Fermer au clic sur le fond
+    // Close on background click
     lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) {
             lightbox.classList.remove('active');
@@ -153,7 +214,7 @@ if (lightbox && lightboxImage) {
         }
     });
 
-    // Fermer avec Escape
+    // Close with Escape
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && lightbox.classList.contains('active')) {
             lightbox.classList.remove('active');
@@ -182,7 +243,7 @@ function createConfetti() {
     }
 }
 
-// Attacher confetti au CTA principal
+// Attach confetti to main CTA
 const ctaConfetti = document.getElementById('ctaConfetti');
 if (ctaConfetti) {
     ctaConfetti.addEventListener('click', (e) => {
@@ -192,13 +253,13 @@ if (ctaConfetti) {
 
 // === LAZY LOADING IMAGES ===
 if ('loading' in HTMLImageElement.prototype) {
-    // Le navigateur supporte lazy loading natif
+    // Browser supports native lazy loading
     const images = document.querySelectorAll('img[loading="lazy"]');
     images.forEach(img => {
         img.src = img.dataset.src || img.src;
     });
 } else {
-    // Fallback pour navigateurs plus anciens
+    // Fallback for older browsers
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -222,7 +283,7 @@ const header = document.querySelector('.header');
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
 
-    // Ajouter ombre au scroll
+    // Add shadow on scroll
     if (currentScroll > 50) {
         header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
     } else {
@@ -243,7 +304,7 @@ function validatePhone(phone) {
     return re.test(phone);
 }
 
-// Exposer les fonctions globalement si nécessaire
+// Expose functions globally if needed
 window.validateEmail = validateEmail;
 window.validatePhone = validatePhone;
 window.createConfetti = createConfetti;
@@ -258,7 +319,7 @@ newsletterForms.forEach(form => {
         const email = emailInput.value;
 
         if (!validateEmail(email)) {
-            alert('Veuillez entrer un email valide');
+            alert('Please enter a valid email');
             return;
         }
 
@@ -267,7 +328,7 @@ newsletterForms.forEach(form => {
 
         // Show success message
         const successMsg = document.createElement('div');
-        successMsg.textContent = '✓ Inscription réussie !';
+        successMsg.textContent = '✓ Subscription successful!';
         successMsg.style.cssText = 'color: var(--color-accent); font-weight: 600; margin-top: 0.5rem;';
         form.appendChild(successMsg);
 
@@ -318,7 +379,7 @@ document.querySelectorAll('.btn-primary, .btn-secondary, .btn-accent').forEach(b
 // === ACCESSIBILITY: Skip to main content ===
 const skipLink = document.createElement('a');
 skipLink.href = '#main-content';
-skipLink.textContent = 'Aller au contenu principal';
+skipLink.textContent = 'Skip to main content';
 skipLink.className = 'skip-link';
 skipLink.style.cssText = `
     position: absolute;
@@ -340,7 +401,7 @@ document.body.insertBefore(skipLink, document.body.firstChild);
 
 // === Console Message ===
 console.log('%c🎄 Christmas Tree Pros 🎄', 'color: #2D5016; font-size: 20px; font-weight: bold;');
-console.log('%cSite développé avec ❤️ pour les fêtes de fin d\'année', 'color: #C41E3A; font-size: 12px;');
+console.log('%cSite developed with ❤️ for the holiday season', 'color: #C41E3A; font-size: 12px;');
 
 // Export functions if using modules
 if (typeof module !== 'undefined' && module.exports) {

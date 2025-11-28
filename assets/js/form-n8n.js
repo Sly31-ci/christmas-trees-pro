@@ -1,30 +1,30 @@
-// ⚙️ CONFIGURATION - Modifier cette ligne avec votre URL N8N
+// ⚙️ CONFIGURATION - Modify this line with your N8N URL
 const N8N_WEBHOOK_URL = 'https://n8n.ovh.synelia.tech/webhook/2c929d42-1270-4d11-a519-4ed0ca69465a';
 
-// Attendre que le DOM soit chargé
+// Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('🔄 Initialisation du formulaire N8N...');
+    console.log('🔄 Initializing N8N form...');
 
     const form = document.getElementById('contactForm');
 
     if (!form) {
-        console.error('❌ Formulaire #contactForm introuvable !');
+        console.error('❌ Form #contactForm not found!');
         return;
     }
 
-    // 📝 Gestion du formulaire
+    // 📝 Form handling
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
-        console.log('📤 Soumission du formulaire...');
+        console.log('📤 Submitting form...');
 
-        // 🔘 Bouton submit
+        // 🔘 Submit button
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
         submitBtn.disabled = true;
-        submitBtn.textContent = '⏳ Envoi en cours...';
+        submitBtn.textContent = '⏳ Sending...';
         submitBtn.style.opacity = '0.6';
 
-        // 📦 Collecter les données
+        // 📦 Collect data
         const formData = {
             firstName: document.getElementById('firstName').value,
             lastName: document.getElementById('lastName').value,
@@ -37,11 +37,11 @@ document.addEventListener('DOMContentLoaded', function () {
             newsletter: document.getElementById('newsletter').checked
         };
 
-        console.log('📦 Données collectées:', formData);
+        console.log('📦 Data collected:', formData);
 
         try {
-            // 📤 Envoyer vers N8N
-            console.log('🌐 Envoi vers:', N8N_WEBHOOK_URL);
+            // 📤 Send to N8N
+            console.log('🌐 Sending to:', N8N_WEBHOOK_URL);
 
             const response = await fetch(N8N_WEBHOOK_URL, {
                 method: 'POST',
@@ -51,85 +51,85 @@ document.addEventListener('DOMContentLoaded', function () {
                 body: JSON.stringify(formData)
             });
 
-            console.log('📡 Réponse HTTP:', response.status, response.statusText);
+            console.log('📡 HTTP Response:', response.status, response.statusText);
 
-            // Vérifier si la requête HTTP a réussi
+            // Check if HTTP request succeeded
             if (!response.ok) {
-                throw new Error(`Erreur HTTP ${response.status}: ${response.statusText}`);
+                throw new Error(`HTTP Error ${response.status}: ${response.statusText}`);
             }
 
-            // Tenter de parser la réponse JSON
+            // Attempt to parse JSON response
             let result;
             try {
                 result = await response.json();
-                console.log('📦 Réponse JSON:', result);
+                console.log('📦 JSON Response:', result);
             } catch (jsonError) {
-                // Si ce n'est pas du JSON, considérer comme succès si status 200
-                console.log('⚠️ Réponse non-JSON, mais status OK');
+                // If not JSON, consider success if status 200
+                console.log('⚠️ Non-JSON response, but status OK');
                 result = { success: true };
             }
 
-            // Vérifier le succès (plusieurs formats possibles)
+            // Check success (multiple formats possible)
             const isSuccess = result.success === true ||
                 result.status === 'success' ||
                 result.ok === true ||
                 response.status === 200;
 
             if (isSuccess) {
-                // ✅ Succès !
-                console.log('✅ Formulaire envoyé avec succès !');
+                // ✅ Success!
+                console.log('✅ Form sent successfully!');
 
-                // Afficher le toast si disponible
+                // Show toast if available
                 const toast = document.getElementById('successToast');
                 if (toast) {
                     toast.classList.add('show');
                     setTimeout(() => toast.classList.remove('show'), 5000);
                 } else {
-                    // Sinon, afficher une alerte
-                    const message = result.message || 'Votre message a été envoyé avec succès !';
+                    // Otherwise, show alert
+                    const message = result.message || 'Your message has been sent successfully!';
                     alert('✅ ' + message);
                 }
 
-                // Réinitialiser le formulaire
+                // Reset form
                 form.reset();
 
-                // 🎉 Confettis (si la fonction existe)
+                // 🎉 Confetti (if function exists)
                 if (typeof createConfetti === 'function') {
                     createConfetti();
                 }
             } else {
-                throw new Error(result.message || result.error || 'Erreur inconnue');
+                throw new Error(result.message || result.error || 'Unknown error');
             }
 
         } catch (error) {
-            // ❌ Erreur
-            console.error('❌ Erreur détaillée:', error);
-            console.error('Type d\'erreur:', error.name);
-            console.error('Message d\'erreur:', error.message);
+            // ❌ Error
+            console.error('❌ Detailed error:', error);
+            console.error('Error type:', error.name);
+            console.error('Error message:', error.message);
 
-            let errorMessage = '❌ Une erreur est survenue lors de l\'envoi.';
+            let errorMessage = '❌ An error occurred while sending.';
 
             if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
-                errorMessage += '\n\n⚠️ Le serveur N8N semble inaccessible. Vérifiez:\n' +
-                    '1. L\'URL du webhook\n' +
-                    '2. La connexion internet\n' +
-                    '3. Les paramètres CORS du serveur N8N';
+                errorMessage += '\n\n⚠️ The N8N server seems inaccessible. Check:\n' +
+                    '1. The webhook URL\n' +
+                    '2. Your internet connection\n' +
+                    '3. N8N server CORS settings';
             } else {
                 errorMessage += '\n\n' + error.message;
             }
 
-            errorMessage += '\n\nVeuillez réessayer ou nous contacter par téléphone au +1(703)8562590';
+            errorMessage += '\n\nPlease try again or contact us by phone at +1(703)8562590';
 
             alert(errorMessage);
         } finally {
-            // Réactiver le bouton
+            // Re-enable button
             submitBtn.disabled = false;
             submitBtn.textContent = originalText;
             submitBtn.style.opacity = '1';
         }
     });
 
-    // ✅ Validation en temps réel
+    // ✅ Real-time validation
     document.querySelectorAll('.form-control').forEach(input => {
         input.addEventListener('blur', function () {
             if (this.hasAttribute('required') && !this.value.trim()) {
@@ -146,11 +146,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // 📅 Date minimale = aujourd'hui
+    // 📅 Minimal date = today
     const dateInput = document.getElementById('date');
     if (dateInput) {
         dateInput.min = new Date().toISOString().split('T')[0];
     }
 
-    console.log('✅ Formulaire N8N initialisé avec succès !');
+    console.log('✅ N8N Form initialized successfully!');
 });
