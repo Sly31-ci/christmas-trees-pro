@@ -395,9 +395,8 @@ const translations = {
 
 /**
  * Language Detection
- * Detects user's preferred language from browser settings
- * English-speaking countries: US, GB, CA, AU, NZ, IE, etc.
- * Others: French (default)
+ * DEFAULT: English (en) for all users
+ * Users can manually switch if needed via changeLanguage()
  */
 function detectLanguage() {
     // Check localStorage first for saved preference
@@ -407,21 +406,14 @@ function detectLanguage() {
         return savedLang;
     }
 
-    // Get browser language
-    const browserLang = navigator.language || navigator.userLanguage || 'fr';
-    console.log('🌍 Browser language detected:', browserLang);
-
-    // Check if English-speaking
-    const englishLanguages = ['en', 'en-US', 'en-GB', 'en-CA', 'en-AU', 'en-NZ', 'en-IE', 'en-ZA', 'en-IN'];
-    const isEnglish = englishLanguages.some(lang => browserLang.toLowerCase().startsWith(lang.toLowerCase().substring(0, 2)));
-
-    const detectedLang = isEnglish ? 'en' : 'fr';
-    console.log('🌍 Detected language:', detectedLang);
+    // Default to English for all users
+    const defaultLang = 'en';
+    console.log('🌍 Default language set to:', defaultLang);
 
     // Save to localStorage
-    localStorage.setItem('christmasTreePros_language', detectedLang);
+    localStorage.setItem('christmasTreePros_language', defaultLang);
 
-    return detectedLang;
+    return defaultLang;
 }
 
 /**
