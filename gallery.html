@@ -53,19 +53,22 @@
 
     <!-- Page Header -->
     <div class="page-header">
-        <h1>Notre Galerie</h1>
-        <p>Découvrez nos plus belles créations et laissez-vous inspirer</p>
+        <h1 data-i18n="gallery.page.title">Notre Galerie</h1>
+        <p data-i18n="gallery.page.subtitle">Découvrez nos plus belles créations et laissez-vous inspirer</p>
     </div>
 
     <!-- Filters -->
     <section class="filters-section">
         <div class="container">
             <div class="filters">
-                <button class="filter-btn active" data-filter="all">Tout voir</button>
-                <button class="filter-btn" data-filter="sapins">Sapins</button>
-                <button class="filter-btn" data-filter="interieur">Décor Intérieur</button>
-                <button class="filter-btn" data-filter="exterieur">Décor Extérieur</button>
-                <button class="filter-btn" data-filter="ambiances">Ambiances</button>
+                <button class="filter-btn active" data-filter="all" data-i18n="gallery.filter.all">Tout voir</button>
+                <button class="filter-btn" data-filter="sapins" data-i18n="gallery.filter.trees">Sapins</button>
+                <button class="filter-btn" data-filter="interieur" data-i18n="gallery.filter.interior">Décor
+                    Intérieur</button>
+                <button class="filter-btn" data-filter="exterieur" data-i18n="gallery.filter.exterior">Décor
+                    Extérieur</button>
+                <button class="filter-btn" data-filter="ambiances"
+                    data-i18n="gallery.filter.ambiance">Ambiances</button>
             </div>
         </div>
     </section>
@@ -77,7 +80,7 @@
                 <!-- Items générés dynamiquement -->
             </div>
             <div class="gallery-load-more">
-                <button class="btn btn-secondary" id="loadMore">Charger plus</button>
+                <button class="btn btn-secondary" id="loadMore" data-i18n="gallery.loadmore">Charger plus</button>
             </div>
         </div>
     </section>
@@ -103,8 +106,8 @@
                     <!-- Prix masqué - contactez-nous pour un devis personnalisé -->
                     <!-- <div class="modal-price" id="modalPrice"></div> -->
                     <ul class="modal-features" id="modalFeatures"></ul>
-                    <button class="btn btn-primary">Demander un devis</button>
-                    <button class="btn btn-accent whatsapp-btn">
+                    <button class="btn btn-primary" data-i18n="gallery.modal.quote">Demander un devis</button>
+                    <button class="btn btn-accent whatsapp-btn" data-i18n="gallery.modal.whatsapp">
                         💬 Contacter via WhatsApp
                     </button>
                 </div>

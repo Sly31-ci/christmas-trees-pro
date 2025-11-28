@@ -199,6 +199,37 @@ const translations = {
         'contact.service.emeraude': 'Pack Émeraude',
         'contact.toast.title': 'Message envoyé !',
         'contact.toast.message': 'Nous vous répondrons sous 24h.',
+
+        // Services Page
+        'services.page.title': 'Nos Services',
+        'services.page.subtitle': 'Des prestations complètes pour une magie de Noël sans effort',
+        'services.cta.quote': 'Demander un devis',
+        'services.cta.discuss': 'Discutons de votre projet',
+        'services.packs.title': 'Nos Packs Tout Compris',
+        'services.faq.title': 'Questions Fréquentes',
+        'services.cta.ready': 'Prêt à Réserver ?',
+        'services.cta.button': 'Obtenir mon devis gratuit',
+
+        // Gallery Page
+        'gallery.page.title': 'Galerie',
+        'gallery.page.subtitle': 'Découvrez nos plus belles réalisations',
+        'gallery.filter.all': 'Tout voir',
+        'gallery.filter.trees': 'Sapins',
+        'gallery.filter.interior': 'Décor Intérieur',
+        'gallery.filter.exterior': 'Décor Extérieur',
+        'gallery.filter.ambiance': 'Ambiances',
+        'gallery.loadmore': 'Charger plus',
+        'gallery.modal.quote': 'Demander un devis',
+        'gallery.modal.whatsapp': '💬 Contacter via WhatsApp',
+
+        // Blog Page
+        'blog.page.title': 'Blog',
+        'blog.page.subtitle': 'Actualités et conseils déco',
+        'blog.readmore': 'Lire plus',
+        'blog.newsletter.title': '📬 Newsletter',
+        'blog.newsletter.subtitle': 'Recevez nos derniers articles, conseils et offres exclusives',
+        'blog.newsletter.placeholder': 'Votre email',
+        'blog.newsletter.button': 'S\'inscrire',
     },
 
     en: {
@@ -390,6 +421,37 @@ const translations = {
         'contact.service.emeraude': 'Emerald Pack',
         'contact.toast.title': 'Message sent!',
         'contact.toast.message': 'We will respond within 24h.',
+
+        // Services Page
+        'services.page.title': 'Our Services',
+        'services.page.subtitle': 'Complete services for effortless Christmas magic',
+        'services.cta.quote': 'Request a quote',
+        'services.cta.discuss': 'Let\'s discuss your project',
+        'services.packs.title': 'Our All-Inclusive Packages',
+        'services.faq.title': 'Frequently Asked Questions',
+        'services.cta.ready': 'Ready to Book?',
+        'services.cta.button': 'Get my free quote',
+
+        // Gallery Page
+        'gallery.page.title': 'Gallery',
+        'gallery.page.subtitle': 'Discover our finest creations',
+        'gallery.filter.all': 'All',
+        'gallery.filter.trees': 'Trees',
+        'gallery.filter.interior': 'Interior Decor',
+        'gallery.filter.exterior': 'Exterior Decor',
+        'gallery.filter.ambiance': 'Ambiances',
+        'gallery.loadmore': 'Load more',
+        'gallery.modal.quote': 'Request a quote',
+        'gallery.modal.whatsapp': '💬 Contact via WhatsApp',
+
+        // Blog Page
+        'blog.page.title': 'Blog',
+        'blog.page.subtitle': 'News and decoration tips',
+        'blog.readmore': 'Read more',
+        'blog.newsletter.title': '📬 Newsletter',
+        'blog.newsletter.subtitle': 'Receive our latest articles, tips and exclusive offers',
+        'blog.newsletter.placeholder': 'Your email',
+        'blog.newsletter.button': 'Subscribe',
     }
 };
 
