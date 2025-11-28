@@ -55,8 +55,8 @@
 
     <!-- Page Header -->
     <div class="page-header">
-        <h1>Contactez-nous</h1>
-        <p>Demandez votre devis gratuit et personnalisé</p>
+        <h1 data-i18n="contact.page.title">Contactez-nous</h1>
+        <p data-i18n="contact.page.subtitle">Demandez votre devis gratuit et personnalisé</p>
     </div>
 
     <!-- Contact Section -->
@@ -65,7 +65,8 @@
             <!-- Info & Map -->
             <div class="contact-info">
                 <div class="contact-info-card">
-                    <h2 style="font-family: var(--font-serif); color: var(--color-primary); margin-bottom: 1.5rem;">Nos
+                    <h2 style="font-family: var(--font-serif); color: var(--color-primary); margin-bottom: 1.5rem;"
+                        data-i18n="contact.info.coords">Nos
                         Coordonnées</h2>
 
                     <div class="contact-info-item">
@@ -73,9 +74,10 @@
                                 alt="Phone">
                         </div>
                         <div class="contact-info-text">
-                            <h3>Téléphone</h3>
+                            <h3 data-i18n="contact.info.phone.title">Téléphone</h3>
                             <p><a href="tel:+17038562590">+1(703)8562590</a></p>
-                            <p style="font-size: 0.9rem; color: var(--color-gray);">Lun-Sam : 9h-18h</p>
+                            <p style="font-size: 0.9rem; color: var(--color-gray);"
+                                data-i18n="contact.info.phone.hours">Lun-Sam : 9h-18h</p>
                         </div>
                     </div>
 
@@ -84,9 +86,10 @@
                                 alt="Email">
                         </div>
                         <div class="contact-info-text">
-                            <h3>Email</h3>
+                            <h3 data-i18n="contact.info.email.title">Email</h3>
                             <p><a href="mailto:christmastreepros@gmail.com">christmastreepros@gmail.com</a></p>
-                            <p style="font-size: 0.9rem; color: var(--color-gray);">Réponse sous 24h</p>
+                            <p style="font-size: 0.9rem; color: var(--color-gray);"
+                                data-i18n="contact.info.email.response">Réponse sous 24h</p>
                         </div>
                     </div>
 
@@ -94,7 +97,7 @@
                         <div class="contact-icon"><img src="assets/images/Location-pin-backgroundWhite.svg"
                                 alt="Location"></div>
                         <div class="contact-info-text">
-                            <h3>Localisation</h3>
+                            <h3 data-i18n="contact.info.location.title">Localisation</h3>
                             <p>Virginia (VA)</p>
                             <p>Maryland (MD)</p>
                             <p>Washington, D.C.</p>
@@ -105,18 +108,19 @@
                         <div class="contact-icon"><img src="assets/images/Clock-time-backgroundWhite.svg"
                                 alt="Horaires"></div>
                         <div class="contact-info-text">
-                            <h3>Horaires</h3>
-                            <p>Lundi - Samedi : 9h00 - 18h00</p>
-                            <p>Dimanche : Fermé</p>
+                            <h3 data-i18n="contact.info.hours.title">Horaires</h3>
+                            <p data-i18n="contact.info.hours.schedule">Lundi - Samedi : 9h00 - 18h00</p>
+                            <p data-i18n="contact.info.hours.closed">Dimanche : Fermé</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="whatsapp-cta">
-                    <h3>💬 Besoin d'une réponse rapide ?</h3>
-                    <p style="margin-bottom: 1rem;">Contactez-nous directement sur WhatsApp</p>
+                    <h3 data-i18n="contact.whatsapp.title">💬 Besoin d'une réponse rapide ?</h3>
+                    <p style="margin-bottom: 1rem;" data-i18n="contact.whatsapp.desc">Contactez-nous directement sur
+                        WhatsApp</p>
                     <a href="https://wa.me/17038562590?text=Bonjour,%20je%20souhaite%20réserver%20une%20décoration%20de%20Noël"
-                        class="btn whatsapp-btn" target="_blank">
+                        class="btn whatsapp-btn" target="_blank" data-i18n="contact.whatsapp.button">
                         Discuter sur WhatsApp
                     </a>
                 </div>
@@ -131,21 +135,25 @@
 
             <!-- Form -->
             <div class="contact-form-container">
-                <h2 style="font-family: var(--font-serif); color: var(--color-primary); margin-bottom: 1.5rem;">
+                <h2 style="font-family: var(--font-serif); color: var(--color-primary); margin-bottom: 1.5rem;"
+                    data-i18n="contact.form.title">
                     Formulaire de Réservation</h2>
-                <p style="color: var(--color-gray); margin-bottom: 2rem;">Remplissez le formulaire ci-dessous et nous
+                <p style="color: var(--color-gray); margin-bottom: 2rem;" data-i18n="contact.form.subtitle">Remplissez
+                    le formulaire ci-dessous et nous
                     vous recontacterons dans les 24h.</p>
 
                 <form id="contactForm">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="firstName">Prénom <span class="required">*</span></label>
+                            <label for="firstName" data-i18n="contact.form.firstname">Prénom <span
+                                    class="required">*</span></label>
                             <input type="text" id="firstName" name="firstName" class="form-control" required>
                             <span class="error-message">Veuillez entrer votre prénom</span>
                         </div>
 
                         <div class="form-group">
-                            <label for="lastName">Nom <span class="required">*</span></label>
+                            <label for="lastName" data-i18n="contact.form.lastname">Nom <span
+                                    class="required">*</span></label>
                             <input type="text" id="lastName" name="lastName" class="form-control" required>
                             <span class="error-message">Veuillez entrer votre nom</span>
                         </div>
@@ -166,7 +174,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="address">Adresse (optionnel)</label>
+                        <label for="address" data-i18n="contact.form.address">Adresse (optionnel)</label>
                         <input type="text" id="address" name="address" class="form-control"
                             placeholder="Ex: 123 Main Street, Ashburn, VA 20147">
                     </div>
@@ -175,20 +183,25 @@
                         <div class="form-group">
                             <label for="service">Type de service <span class="required">*</span></label>
                             <select id="service" name="service" class="form-control" required>
-                                <option value="">Choisissez...</option>
-                                <option value="sapin">Sapin de Noël</option>
-                                <option value="interieur">Décoration Intérieure</option>
-                                <option value="exterieur">Décoration Extérieure</option>
-                                <option value="surmesure">Création Sur-Mesure</option>
-                                <option value="pack-douceur">Pack Douceur</option>
-                                <option value="pack-feerie">Pack Féerie</option>
-                                <option value="pack-emeraude">Pack Émeraude</option>
+                                <option value="" data-i18n="contact.service.placeholder">Choisissez...</option>
+                                <option value="sapin" data-i18n="contact.service.tree">Sapin de Noël</option>
+                                <option value="interieur" data-i18n="contact.service.interior">Décoration Intérieure
+                                </option>
+                                <option value="exterieur" data-i18n="contact.service.exterior">Décoration Extérieure
+                                </option>
+                                <option value="surmesure" data-i18n="contact.service.custom">Création Sur-Mesure
+                                </option>
+                                <option value="pack-douceur" data-i18n="contact.service.douceur">Pack Douceur</option>
+                                <option value="pack-feerie" data-i18n="contact.service.feerie">Pack Féerie</option>
+                                <option value="pack-emeraude" data-i18n="contact.service.emeraude">Pack Émeraude
+                                </option>
                             </select>
                             <span class="error-message">Veuillez choisir un service</span>
                         </div>
 
                         <div class="form-group">
-                            <label for="date">Date souhaitée <span class="required">*</span></label>
+                            <label for="date" data-i18n="contact.form.date">Date souhaitée <span
+                                    class="required">*</span></label>
                             <input type="date" id="date" name="date" class="form-control" required>
                             <span class="error-message">Veuillez choisir une date</span>
                         </div>
@@ -203,15 +216,17 @@
                     <div class="form-group" style="margin-bottom: 2rem;">
                         <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
                             <input type="checkbox" id="newsletter" name="newsletter" style="width: auto;">
-                            <span>Je souhaite recevoir la newsletter avec les offres exclusives</span>
+                            <span data-i18n="contact.form.newsletter">Je souhaite recevoir la newsletter avec les offres
+                                exclusives</span>
                         </label>
                     </div>
 
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" data-i18n="contact.submit">
                         Envoyer ma demande
                     </button>
 
-                    <p style="font-size: 0.85rem; color: var(--color-gray); margin-top: 1rem; text-align: center;">
+                    <p style="font-size: 0.85rem; color: var(--color-gray); margin-top: 1rem; text-align: center;"
+                        data-i18n="contact.form.privacy">
                         En soumettant ce formulaire, vous acceptez notre politique de confidentialité.
                     </p>
                 </form>
