@@ -339,7 +339,7 @@ skipLink.addEventListener('blur', () => {
 document.body.insertBefore(skipLink, document.body.firstChild);
 
 // === Console Message ===
-console.log('%c🎄 Magie de Noël 🎄', 'color: #2D5016; font-size: 20px; font-weight: bold;');
+console.log('%c🎄 Christmas Tree Pros 🎄', 'color: #2D5016; font-size: 20px; font-weight: bold;');
 console.log('%cSite développé avec ❤️ pour les fêtes de fin d\'année', 'color: #C41E3A; font-size: 12px;');
 
 // Export functions if using modules
