@@ -2,50 +2,7 @@
 // MAIN.JS - Script Principal
 // ========================================
 
-// === COUNTDOWN TIMER TO CHRISTMAS ===
-function updateCountdown() {
-    const now = new Date();
-    const currentYear = now.getFullYear();
-    
-    // Target: 25 décembre de l'année en cours à 00:00
-    let christmas = new Date(currentYear, 11, 25, 0, 0, 0);
-    
-    // Si Noël est déjà passé cette année, viser l'année prochaine
-    if (now > christmas) {
-        christmas = new Date(currentYear + 1, 11, 25, 0, 0, 0);
-    }
-    
-    const diff = christmas - now;
-    
-    const countdownElement = document.getElementById('countdown');
-    
-    if (diff > 0) {
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-        
-        const daysEl = document.getElementById('days');
-        const hoursEl = document.getElementById('hours');
-        const minutesEl = document.getElementById('minutes');
-        const secondsEl = document.getElementById('seconds');
-        
-        if (daysEl) daysEl.textContent = days.toString().padStart(2, '0');
-        if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
-        if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
-        if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
-    } else {
-        if (countdownElement) {
-            countdownElement.innerHTML = '<div style="font-size: 1.2rem; font-weight: 700;">🎄 Joyeux Noël ! 🎅</div>';
-        }
-    }
-}
-
-// Initialiser le compteur
-if (document.getElementById('countdown')) {
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-}
+// Note: Countdown is now handled by i18n.js
 
 // === MOBILE MENU ===
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -56,13 +13,14 @@ if (mobileMenuBtn && mainNav) {
     const mobileReserverBtn = document.createElement('a');
     mobileReserverBtn.href = 'contact.html';
     mobileReserverBtn.className = 'btn btn-primary';
-    mobileReserverBtn.textContent = 'Réserver';
+    mobileReserverBtn.setAttribute('data-i18n', 'nav.book');
+    mobileReserverBtn.textContent = window.ChristmasI18n ? window.ChristmasI18n.t('nav.book') : 'Réserver';
     mobileReserverBtn.style.cssText = 'margin-top: 1rem; width: 100%; text-align: center;';
-    
+
     mobileMenuBtn.addEventListener('click', () => {
         mainNav.classList.toggle('mobile-open');
         mobileMenuBtn.textContent = mainNav.classList.contains('mobile-open') ? '✕' : '☰';
-        
+
         // Add Réserver button when menu opens
         if (mainNav.classList.contains('mobile-open')) {
             if (!mainNav.querySelector('.btn-primary')) {
@@ -78,13 +36,14 @@ if (mobileMenuBtn && mainNav) {
             mobileMenuBtn.textContent = '☰';
         });
     });
-    
+
     // Close menu when clicking Réserver button
     mobileReserverBtn.addEventListener('click', () => {
         mainNav.classList.remove('mobile-open');
         mobileMenuBtn.textContent = '☰';
     });
 }
+
 
 
 // === SCROLL ANIMATIONS (INTERSECTION OBSERVER) ===
@@ -113,10 +72,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
         if (href === '#') return;
-        
+
         e.preventDefault();
         const target = document.querySelector(href);
-        
+
         if (target) {
             const headerOffset = 80;
             const elementPosition = target.getBoundingClientRect().top;
@@ -139,7 +98,7 @@ if (document.querySelector('.testimonial')) {
     function showTestimonial(index) {
         testimonials.forEach(t => t.classList.remove('active'));
         dots.forEach(d => d.classList.remove('active'));
-        
+
         if (testimonials[index] && dots[index]) {
             testimonials[index].classList.add('active');
             dots[index].classList.add('active');
@@ -206,7 +165,7 @@ if (lightbox && lightboxImage) {
 // === CONFETTI EFFECT ===
 function createConfetti() {
     const colors = ['#D4AF37', '#C41E3A', '#2D5016', '#FFFEF7'];
-    
+
     for (let i = 0; i < 50; i++) {
         const confetti = document.createElement('div');
         confetti.className = 'confetti';
@@ -216,9 +175,9 @@ function createConfetti() {
         confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
         confetti.style.width = (Math.random() * 8 + 5) + 'px';
         confetti.style.height = confetti.style.width;
-        
+
         document.body.appendChild(confetti);
-        
+
         setTimeout(() => confetti.remove(), 3000);
     }
 }
@@ -262,14 +221,14 @@ const header = document.querySelector('.header');
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    
+
     // Ajouter ombre au scroll
     if (currentScroll > 50) {
         header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
     } else {
         header.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
     }
-    
+
     lastScroll = currentScroll;
 });
 
@@ -294,26 +253,26 @@ const newsletterForms = document.querySelectorAll('.newsletter-form');
 newsletterForms.forEach(form => {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         const emailInput = form.querySelector('input[type="email"]');
         const email = emailInput.value;
-        
+
         if (!validateEmail(email)) {
             alert('Veuillez entrer un email valide');
             return;
         }
-        
+
         // Simulate API call
         console.log('Newsletter subscription:', email);
-        
+
         // Show success message
         const successMsg = document.createElement('div');
         successMsg.textContent = '✓ Inscription réussie !';
         successMsg.style.cssText = 'color: var(--color-accent); font-weight: 600; margin-top: 0.5rem;';
         form.appendChild(successMsg);
-        
+
         form.reset();
-        
+
         setTimeout(() => {
             successMsg.remove();
         }, 3000);
@@ -336,7 +295,7 @@ function debounce(func, wait) {
 // === ANALYTICS (Placeholder) ===
 function trackEvent(eventName, eventData = {}) {
     console.log('Analytics Event:', eventName, eventData);
-    
+
     // In production, integrate with Google Analytics, Mixpanel, etc.
     // Example: gtag('event', eventName, eventData);
 }
@@ -386,7 +345,6 @@ console.log('%cSite développé avec ❤️ pour les fêtes de fin d\'année', '
 // Export functions if using modules
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
-        updateCountdown,
         createConfetti,
         validateEmail,
         validatePhone,

@@ -4,18 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
+    <meta name="description" data-i18n="meta.description"
         content="Christmas Tree Pros - Spécialiste décoration sapins et maisons pour les fêtes. Installation professionnelle, créations sur-mesure.">
     <meta property="og:title" content="Christmas Tree Pros - Décoration professionnelle">
     <meta property="og:description" content="Transformez votre maison en un véritable conte de Noël">
     <meta property="og:image" content="assets/images/hero.jpg">
-    <title>Christmas Tree Pros - Décoration & Ambiance</title>
+    <title data-i18n="meta.title">Christmas Tree Pros - Décoration & Ambiance</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/i18n.js"></script>
 </head>
 
 <body>
@@ -25,34 +26,34 @@
             <img src="assets/images/xMas_logo.png" class="logo" alt="Christmas Tree Pros" />
 
             <nav class="nav" id="mainNav">
-                <a href="index.html">Accueil</a>
-                <a href="gallery.html">Galerie</a>
-                <a href="services.html">Services</a>
-                <a href="about.html">À propos</a>
-                <a href="blog.html">Blog</a>
-                <a href="contact.html">Contact</a>
+                <a href="index.html" data-i18n="nav.home">Accueil</a>
+                <a href="gallery.html" data-i18n="nav.gallery">Galerie</a>
+                <a href="services.html" data-i18n="nav.services">Services</a>
+                <a href="about.html" data-i18n="nav.about">À propos</a>
+                <a href="blog.html" data-i18n="nav.blog">Blog</a>
+                <a href="contact.html" data-i18n="nav.contact">Contact</a>
             </nav>
 
             <div class="countdown" id="countdown">
                 <div class="countdown-item">
                     <span class="countdown-value" id="days">--</span>
-                    <span class="countdown-label">Jours</span>
+                    <span class="countdown-label" id="days-label" data-i18n="countdown.days">Jours</span>
                 </div>
                 <div class="countdown-item">
                     <span class="countdown-value" id="hours">--</span>
-                    <span class="countdown-label">H</span>
+                    <span class="countdown-label" id="hours-label" data-i18n="countdown.hours">H</span>
                 </div>
                 <div class="countdown-item">
                     <span class="countdown-value" id="minutes">--</span>
-                    <span class="countdown-label">Min</span>
+                    <span class="countdown-label" id="minutes-label" data-i18n="countdown.minutes">Min</span>
                 </div>
                 <div class="countdown-item">
                     <span class="countdown-value" id="seconds">--</span>
-                    <span class="countdown-label">Sec</span>
+                    <span class="countdown-label" id="seconds-label" data-i18n="countdown.seconds">Sec</span>
                 </div>
             </div>
 
-            <a href="contact.html" class="btn btn-primary">Réserver</a>
+            <a href="contact.html" class="btn btn-primary" data-i18n="nav.book">Réserver</a>
             <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
         </div>
     </header>
@@ -61,12 +62,14 @@
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1>Transformez votre maison en un véritable conte de Noël</h1>
-            <p>Installation professionnelle de décorations de Noël sur mesure. Émerveillement garanti pour toute la
+            <h1 data-i18n="hero.title">Transformez votre maison en un véritable conte de Noël</h1>
+            <p data-i18n="hero.subtitle">Installation professionnelle de décorations de Noël sur mesure. Émerveillement
+                garanti pour toute la
                 famille.</p>
             <div class="hero-cta">
-                <a href="contact.html" class="btn btn-primary" id="ctaConfetti">Demandez un devis gratuit</a>
-                <a href="gallery.html" class="btn btn-secondary">Voir nos réalisations</a>
+                <a href="contact.html" class="btn btn-primary" id="ctaConfetti" data-i18n="hero.cta.quote">Demandez un
+                    devis gratuit</a>
+                <a href="gallery.html" class="btn btn-secondary" data-i18n="hero.cta.gallery">Voir nos réalisations</a>
             </div>
         </div>
     </section>
@@ -75,34 +78,35 @@
     <section class="section" id="realisations">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Nos Plus Belles Réalisations</h2>
-                <p class="section-subtitle">Découvrez nos créations qui ont émerveillé nos clients</p>
+                <h2 class="section-title" data-i18n="realizations.title">Nos Plus Belles Réalisations</h2>
+                <p class="section-subtitle" data-i18n="realizations.subtitle">Découvrez nos créations qui ont émerveillé
+                    nos clients</p>
             </div>
             <div class="realisations-grid">
                 <div class="realisation-card" data-project="sapin-luxe">
                     <img src="assets/images/gallery/ChristmasTreePro.png" alt="Sapin de Noël luxe" loading="lazy">
                     <div class="realisation-overlay">
-                        <h3 class="realisation-title">Sapin Grand Luxe</h3>
-                        <p>Décoration premium avec ornements dorés</p>
-                        <button class="btn btn-accent">Voir le projet</button>
+                        <h3 class="realisation-title" data-i18n="realizations.tree.title">Sapin Grand Luxe</h3>
+                        <p data-i18n="realizations.tree.desc">Décoration premium avec ornements dorés</p>
+                        <button class="btn btn-accent" data-i18n="realizations.view">Voir le projet</button>
                     </div>
                 </div>
                 <div class="realisation-card" data-project="exterieur">
                     <img src="assets/images/gallery/ChristmasHouseExterior.png" alt="Décoration extérieure"
                         loading="lazy">
                     <div class="realisation-overlay">
-                        <h3 class="realisation-title">Façade Féerique</h3>
-                        <p>Illuminations et décors extérieurs spectaculaires</p>
-                        <button class="btn btn-accent">Voir le projet</button>
+                        <h3 class="realisation-title" data-i18n="realizations.exterior.title">Façade Féerique</h3>
+                        <p data-i18n="realizations.exterior.desc">Illuminations et décors extérieurs spectaculaires</p>
+                        <button class="btn btn-accent" data-i18n="realizations.view">Voir le projet</button>
                     </div>
                 </div>
                 <div class="realisation-card" data-project="interieur">
                     <img src="assets/images/gallery/ChristmasHouseInterior.png" alt="Décoration intérieure"
                         loading="lazy">
                     <div class="realisation-overlay">
-                        <h3 class="realisation-title">Ambiance Chaleureuse</h3>
-                        <p>Décoration d'intérieur harmonieuse et élégante</p>
-                        <button class="btn btn-accent">Voir le projet</button>
+                        <h3 class="realisation-title" data-i18n="realizations.interior.title">Ambiance Chaleureuse</h3>
+                        <p data-i18n="realizations.interior.desc">Décoration d'intérieur harmonieuse et élégante</p>
+                        <button class="btn btn-accent" data-i18n="realizations.view">Voir le projet</button>
                     </div>
                 </div>
             </div>
@@ -113,32 +117,37 @@
     <section class="section" style="background: var(--color-light-gray);">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Nos Services</h2>
-                <p class="section-subtitle">Des prestations complètes pour une magie de Noël sans effort</p>
+                <h2 class="section-title" data-i18n="services.title">Nos Services</h2>
+                <p class="section-subtitle" data-i18n="services.subtitle">Des prestations complètes pour une magie de
+                    Noël sans effort</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon"><img src="assets/images/party.png" alt=""></div>
-                    <h3 class="service-title">Sapins de Noël</h3>
-                    <p class="service-description">Sélection et décoration de sapins naturels ou artificiels.
+                    <h3 class="service-title" data-i18n="services.trees.title">Sapins de Noël</h3>
+                    <p class="service-description" data-i18n="services.trees.desc">Sélection et décoration de sapins
+                        naturels ou artificiels.
                         Installation et retrait inclus.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><img src="assets/images/icons8-star-100.png" alt=""></div>
-                    <h3 class="service-title">Décor Intérieur</h3>
-                    <p class="service-description">Création d'ambiances féeriques avec guirlandes, luminaires et
+                    <h3 class="service-title" data-i18n="services.interior.title">Décor Intérieur</h3>
+                    <p class="service-description" data-i18n="services.interior.desc">Création d'ambiances féeriques
+                        avec guirlandes, luminaires et
                         ornements raffinés.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><img src="assets/images/icons8-exterior-100.png" alt=""></div>
-                    <h3 class="service-title">Décor Extérieur</h3>
-                    <p class="service-description">Illumination de façades, jardins et terrasses. Installation sécurisée
+                    <h3 class="service-title" data-i18n="services.exterior.title">Décor Extérieur</h3>
+                    <p class="service-description" data-i18n="services.exterior.desc">Illumination de façades, jardins
+                        et terrasses. Installation sécurisée
                         et professionnelle.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><img src="assets/images/art.png" alt=""></div>
-                    <h3 class="service-title">Sur-Mesure</h3>
-                    <p class="service-description">Créations personnalisées selon vos envies et votre style. Conseil
+                    <h3 class="service-title" data-i18n="services.custom.title">Sur-Mesure</h3>
+                    <p class="service-description" data-i18n="services.custom.desc">Créations personnalisées selon vos
+                        envies et votre style. Conseil
                         déco inclus.</p>
                 </div>
             </div>
@@ -149,23 +158,26 @@
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Ils Nous Font Confiance</h2>
+                <h2 class="section-title" data-i18n="testimonials.title">Ils Nous Font Confiance</h2>
             </div>
             <div class="testimonials-container">
                 <div class="testimonial active">
-                    <p class="testimonial-text">"Une équipe formidable ! Notre maison était magnifique, les enfants
+                    <p class="testimonial-text" data-i18n="testimonials.1.text">"Une équipe formidable ! Notre maison
+                        était magnifique, les enfants
                         étaient émerveillés. Service impeccable du début à la fin."</p>
-                    <p class="testimonial-author">— Sophie et Marc, Paris</p>
+                    <p class="testimonial-author" data-i18n="testimonials.1.author">— Sophie et Marc, Paris</p>
                 </div>
                 <div class="testimonial">
-                    <p class="testimonial-text">"Professionnalisme et créativité au rendez-vous. Nos décorations
+                    <p class="testimonial-text" data-i18n="testimonials.2.text">"Professionnalisme et créativité au
+                        rendez-vous. Nos décorations
                         extérieures ont fait sensation dans tout le quartier !"</p>
-                    <p class="testimonial-author">— Famille Dubois, Lyon</p>
+                    <p class="testimonial-author" data-i18n="testimonials.2.author">— Famille Dubois, Lyon</p>
                 </div>
                 <div class="testimonial">
-                    <p class="testimonial-text">"Un gain de temps précieux pendant les fêtes. La déco était sublime et
+                    <p class="testimonial-text" data-i18n="testimonials.3.text">"Un gain de temps précieux pendant les
+                        fêtes. La déco était sublime et
                         l'installation très rapide. Je recommande vivement !"</p>
-                    <p class="testimonial-author">— Claire Martin, Bordeaux</p>
+                    <p class="testimonial-author" data-i18n="testimonials.3.author">— Claire Martin, Bordeaux</p>
                 </div>
                 <div class="testimonial-controls">
                     <span class="testimonial-dot active" data-index="0"></span>
@@ -179,10 +191,11 @@
     <!-- CTA -->
     <section class="cta-section">
         <div class="container">
-            <h2 class="section-title">Prêt à Vivre la Magie de Noël ?</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Réservez dès maintenant votre installation avant qu'il ne
+            <h2 class="section-title" data-i18n="cta.title">Prêt à Vivre la Magie de Noël ?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;" data-i18n="cta.subtitle">Réservez dès maintenant votre
+                installation avant qu'il ne
                 soit trop tard !</p>
-            <a href="contact.html" class="btn btn-accent">Je réserve ma déco de rêve</a>
+            <a href="contact.html" class="btn btn-accent" data-i18n="cta.button">Je réserve ma déco de rêve</a>
         </div>
     </section>
 
@@ -191,20 +204,21 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Christmas Tree Pros</h3>
-                <p>Spécialistes de la décoration de Noël depuis 2015. Émerveillement et professionnalisme garantis.</p>
+                <p data-i18n="footer.company.desc">Spécialistes de la décoration de Noël depuis 2015. Émerveillement et
+                    professionnalisme garantis.</p>
             </div>
             <div class="footer-section">
-                <h3>Navigation</h3>
+                <h3 data-i18n="footer.navigation">Navigation</h3>
                 <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="gallery.html">Galerie</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="about.html">À propos</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html" data-i18n="nav.home">Accueil</a></li>
+                    <li><a href="gallery.html" data-i18n="nav.gallery">Galerie</a></li>
+                    <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">À propos</a></li>
+                    <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Contact</h3>
+                <h3 data-i18n="footer.contact">Contact</h3>
                 <ul>
                     <li><img src="assets/images/wired-outline-1676-telephone-call-hand-hover-pinch.svg" alt="Phone"
                             class="contact-icon"> +1(703)8562590</li>
@@ -215,7 +229,7 @@
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Suivez-nous</h3>
+                <h3 data-i18n="footer.follow">Suivez-nous</h3>
                 <ul>
                     <li><a href="https://www.facebook.com/people/Christmas-Tree-Pros/61583618916568/?locale=fr_FR"
                             target="_blank">Facebook</a></li>
@@ -226,7 +240,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Christmas Tree Pros. Tous droits réservés.</p>
+            <p data-i18n="footer.rights">&copy; 2024 Christmas Tree Pros. Tous droits réservés.</p>
         </div>
     </footer>
 
@@ -239,40 +253,6 @@
     </div>
 
     <script>
-        // === COUNTDOWN TIMER ===
-        function updateCountdown() {
-            const now = new Date();
-            const currentYear = now.getFullYear();
-
-            // Target: 25 décembre de l'année en cours à 00:00
-            let christmas = new Date(currentYear, 11, 25, 0, 0, 0);
-
-            // Si Noël est déjà passé cette année, viser l'année prochaine
-            if (now > christmas) {
-                christmas = new Date(currentYear + 1, 11, 25, 0, 0, 0);
-            }
-
-            const diff = christmas - now;
-
-            if (diff > 0) {
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-                document.getElementById('days').textContent = days.toString().padStart(2, '0');
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-            } else {
-                document.getElementById('countdown').innerHTML = '🎄 Joyeux Noël ! 🎅';
-            }
-        }
-
-        // Update every second
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-
         // === MOBILE MENU ===
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mainNav = document.getElementById('mainNav');
