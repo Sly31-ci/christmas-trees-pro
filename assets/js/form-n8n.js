@@ -1,5 +1,5 @@
 // ⚙️ CONFIGURATION - Modify this line with your N8N URL
-const N8N_WEBHOOK_URL = 'https://n8n.ovh.synelia.tech/webhook-test/2c929d42-1270-4d11-a519-4ed0ca69465a';
+const N8N_WEBHOOK_URL = 'https://n8n.ovh.synelia.tech/webhook/2c929d42-1270-4d11-a519-4ed0ca69465a';
 
 // 🔒 SECURITY CONFIGURATION
 // Set your reCAPTCHA site key here (get it from https://www.google.com/recaptcha/admin)
@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
             // 🔒 SECURITY: Check rate limit
             if (!contactRateLimiter.isAllowed()) {
                 const waitTime = Math.ceil(contactRateLimiter.getTimeUntilReset() / 1000);
-                alert(`⚠️ Too many submissions. Please wait ${waitTime} seconds before trying again.`);
+                // Icon: ⏳ (hourglass - waiting/rate limit)
+                toastWarning(`Trop de soumissions. Veuillez attendre ${waitTime} secondes avant de réessayer.`, 5000);
                 return;
             }
 
@@ -57,7 +58,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Validate required fields
             if (!firstName || !lastName) {
-                alert('❌ Please enter your full name.');
+                // Icon: ❌ (error - validation failed)
+                toastError('Veuillez entrer votre nom complet.');
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalText;
                 submitBtn.style.opacity = '1';
@@ -65,7 +67,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             if (!email) {
-                alert('❌ Please enter a valid email address.');
+                // Icon: ❌ (error - invalid email)
+                toastError('Veuillez entrer une adresse email valide.');
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalText;
                 submitBtn.style.opacity = '1';
@@ -73,7 +76,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             if (!phone) {
-                alert('❌ Please enter a valid phone number.');
+                // Icon: ❌ (error - invalid phone)
+                toastError('Veuillez entrer un numéro de téléphone valide.');
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalText;
                 submitBtn.style.opacity = '1';
@@ -117,12 +121,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
-                alert('✅ Votre demande a été envoyée avec succès !');
+                // Icon: 🎄 (Christmas tree - success)
+                toastSuccess('Votre demande a été envoyée avec succès !', 5000);
                 form.reset();
                 contactRateLimiter.reset(); // Reset on success
 
             } catch (error) {
-                alert("❌ Erreur lors de l’envoi du formulaire.\nVeuillez réessayer.");
+                // Icon: ❌ (error - submission failed)
+                toastError("Erreur lors de l'envoi du formulaire.\nVeuillez réessayer.", 5000);
                 console.error(error);
 
             } finally {
@@ -154,7 +160,8 @@ document.addEventListener('DOMContentLoaded', function () {
             // 🔒 SECURITY: Check rate limit
             if (!newsletterRateLimiter.isAllowed()) {
                 const waitTime = Math.ceil(newsletterRateLimiter.getTimeUntilReset() / 1000);
-                alert(`⚠️ Too many submissions. Please wait ${waitTime} seconds before trying again.`);
+                // Icon: ⏳ (hourglass - rate limit)
+                toastWarning(`Trop de soumissions. Veuillez attendre ${waitTime} secondes avant de réessayer.`, 5000);
                 return;
             }
 
@@ -165,7 +172,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const email = window.SecurityUtils.sanitizeEmail(rawEmail);
 
             if (!email) {
-                alert("⚠️ Veuillez entrer une adresse email valide.");
+                // Icon: ❌ (error - invalid email)
+                toastError("Veuillez entrer une adresse email valide.", 4000);
                 return;
             }
 
@@ -204,12 +212,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (!response.ok) throw new Error("Newsletter submission failed");
 
-                alert("🎉 Merci ! Vous êtes maintenant inscrit à notre newsletter.");
+                // Icon: 🎄 (Christmas tree - success)
+                toastSuccess("Merci ! Vous êtes maintenant inscrit à notre newsletter.", 5000);
                 newsletterForm.reset();
                 newsletterRateLimiter.reset(); // Reset on success
 
             } catch (error) {
-                alert("❌ Impossible de vous inscrire pour le moment.\nVeuillez réessayer.");
+                // Icon: ❌ (error - subscription failed)
+                toastError("Impossible de vous inscrire pour le moment.\nVeuillez réessayer.", 5000);
                 console.error(error);
 
             } finally {
