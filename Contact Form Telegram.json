@@ -1,0 +1,252 @@
+{
+  "name": "Contact Form Telegram",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "2c929d42-1270-4d11-a519-4ed0ca69465a",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -544,
+        1328
+      ],
+      "id": "a4c57fa2-41d2-45c4-a02d-658d8ad01ba1",
+      "name": "Webhook",
+      "webhookId": "2c929d42-1270-4d11-a519-4ed0ca69465a"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.body.formType }}",
+              "value2": "reservation"
+            }
+          ]
+        }
+      },
+      "id": "455d75e5-04b4-4d9a-995c-f890a6d0770e",
+      "name": "Route by Form Type",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        1328
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get form data\nconst data = $input.item.json.body;\n\n// Map services to English\nconst services = {\n  'sapin': '🎄 Christmas Tree',\n  'interieur': '✨ Interior Decoration',\n  'exterieur': '🏡 Exterior Decoration',\n  'surmesure': '🎨 Custom Creation',\n  'pack-douceur': '💝 Sweetness Pack',\n  'pack-feerie': '⭐ Enchantment Pack',\n  'pack-emeraude': '💎 Emerald Pack'\n};\n\nconst serviceLabel = services[data.service] || data.service;\n\n// Format date in English\nconst dateObj = new Date(data.date);\nconst options = { \n  weekday: 'long', \n  year: 'numeric', \n  month: 'long', \n  day: 'numeric' \n};\nconst dateFormatted = dateObj.toLocaleDateString('en-US', options);\n\n// Create Telegram message with Markdown formatting\nconst telegramMessage = `🎄 *NEW BOOKING REQUEST*\n\n👤 *CLIENT*\n• Name: *${data.firstName} ${data.lastName}*\n• 📧 Email: \\`${data.email}\\`\n• 📱 Phone: \\`${data.phone}\\`${data.address ? `\\n• 📍 Address: ${data.address}` : ''}\n\n🎁 *REQUEST*\n• Service: ${serviceLabel}\n• 📅 Date: ${dateFormatted}\n${data.message ? `\\n💬 *MESSAGE*\\n_${data.message}_\\n` : ''}\n📬 Newsletter: ${data.newsletter ? '✅ Yes' : '❌ No'}\n\n⏰ Received: ${new Date().toLocaleString('en-US', {\n  dateStyle: 'short',\n  timeStyle: 'short'\n})}\n\n🔗 *QUICK ACTIONS*`;\n\n// Create inline buttons for quick actions\nconst inlineKeyboard = {\n  inline_keyboard: [\n    [\n      {\n        text: '📧 Email',\n        url: `mailto:${data.email}`\n      },\n      {\n        text: '📱 Call',\n        url: `tel:${data.phone}`\n      }\n    ],\n    [\n      {\n        text: '💬 WhatsApp',\n        url: `https://wa.me/${data.phone.replace(/[^\\d]/g, '')}`\n      }\n    ]\n  ]\n};\n\nreturn {\n  json: {\n    telegramMessage: telegramMessage,\n    inlineKeyboard: inlineKeyboard,\n    clientData: {\n      firstName: data.firstName,\n      lastName: data.lastName,\n      email: data.email,\n      phone: data.phone,\n      address: data.address || '',\n      service: data.service,\n      serviceLabel: serviceLabel,\n      date: data.date,\n      dateFormatted: dateFormatted,\n      message: data.message || '',\n      newsletter: data.newsletter || false\n    },\n    timestamp: new Date().toISOString(),\n    formType: 'reservation'\n  }\n};"
+      },
+      "id": "4463fce5-56c9-42c1-94da-a72c203acc7a",
+      "name": "Format Reservation Message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -96,
+        1184
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// ========================================\n// N8N - Format Newsletter Message\n// COPIER-COLLER DIRECTEMENT DANS N8N\n// ========================================\n\n// Get newsletter data\nconst data = $input.item.json.body;\n\n// Validation: Check if email exists\nif (!data || !data.email) {\n  throw new Error('Email is missing from the payload');\n}\n\nconst email = data.email.trim();\n\n// Validate email format\nconst emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\nif (!emailRegex.test(email)) {\n  throw new Error('Invalid email format: ' + email);\n}\n\n// Format subscription date\nconst subscriptionDate = new Date().toLocaleString('en-US', {\n  month: 'numeric',\n  day: 'numeric',\n  year: '2-digit',\n  hour: 'numeric',\n  minute: '2-digit',\n  hour12: true\n});\n\n// Create Telegram message for newsletter subscription\n// IMPORTANT: Use \\` to escape backticks in Markdown\nconst telegramMessage = `📬 *NEW NEWSLETTER SUBSCRIPTION*\n\n📧 *Email:* \\`${email}\\`\n\n⏰ *Subscribed:* ${subscriptionDate}\n\n🎄 *Source:* Website Newsletter\n\n🔗 *QUICK ACTIONS*`;\n\n// Create inline keyboard buttons\nconst inlineKeyboard = {\n  inline_keyboard: [\n    [\n      {\n        text: '📧 Send Welcome Email',\n        url: `mailto:${email}?subject=Welcome%20to%20Christmas%20Tree%20Pros!&body=Thank%20you%20for%20subscribing!`\n      }\n    ]\n  ]\n};\n\n// Return formatted data\nreturn {\n  json: {\n    telegramMessage: telegramMessage,\n    inlineKeyboard: inlineKeyboard,\n    email: email,\n    timestamp: new Date().toISOString(),\n    formattedDate: subscriptionDate,\n    formType: 'newsletter'\n  }\n};"
+      },
+      "id": "8a3ac512-bada-4e9d-b090-f4ae6b3c9dbc",
+      "name": "Format Newsletter Message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -96,
+        1472
+      ]
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        352,
+        1328
+      ],
+      "id": "04ea44f3-234b-417e-b2cc-2d9ef9c7c083",
+      "name": "Merge Telegram Responses"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json.formType === 'newsletter' ? \n  {\n    \"success\": true,\n    \"message\": \"✅ Thank you! You are now subscribed to our newsletter.\",\n    \"data\": {\n      \"email\": $json.email,\n      \"subscriptionDate\": $json.timestamp\n    },\n    \"timestamp\": $json.timestamp\n  }\n  :\n  {\n    \"success\": true,\n    \"message\": \"✅ Your request has been sent successfully! We will contact you within 24 hours.\",\n    \"data\": {\n      \"reference\": $json.timestamp.split('T')[0].replace(/-/g, '') + '-' + Math.random().toString(36).substr(2, 6).toUpperCase(),\n      \"client\": $json.clientData.firstName + ' ' + $json.clientData.lastName,\n      \"service\": $json.clientData.serviceLabel,\n      \"date\": $json.clientData.dateFormatted\n    },\n    \"timestamp\": $json.timestamp\n  }\n}}",
+        "options": {}
+      },
+      "id": "a6192fa3-dcca-4c4d-81de-d5a993cd0469",
+      "name": "Response to Website",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        576,
+        1328
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "=1735077050",
+        "text": "={{ $json.telegramMessage }}",
+        "replyMarkup": "inlineKeyboard",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "9cc0bff6-a046-4376-b6a7-60a5eac3978a",
+      "name": "TelegramUser",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        144,
+        1232
+      ],
+      "webhookId": "59717fd2-6bb6-4e69-a937-4c9f7791ce13",
+      "credentials": {
+        "telegramApi": {
+          "id": "VWubwOXwfXbd4Yje",
+          "name": "WarningFromForms"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "=6505115827",
+        "text": "={{ $json.telegramMessage }}",
+        "replyMarkup": "inlineKeyboard",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "28adb55d-12be-4e08-9a49-82e91b8ed34f",
+      "name": "TelegramUser1",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        128,
+        1424
+      ],
+      "webhookId": "59717fd2-6bb6-4e69-a937-4c9f7791ce13",
+      "credentials": {
+        "telegramApi": {
+          "id": "VWubwOXwfXbd4Yje",
+          "name": "WarningFromForms"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Route by Form Type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route by Form Type": {
+      "main": [
+        [
+          {
+            "node": "Format Reservation Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format Newsletter Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Reservation Message": {
+      "main": [
+        [
+          {
+            "node": "TelegramUser",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "TelegramUser1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Newsletter Message": {
+      "main": [
+        [
+          {
+            "node": "TelegramUser",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "TelegramUser1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Telegram Responses": {
+      "main": [
+        [
+          {
+            "node": "Response to Website",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TelegramUser": {
+      "main": [
+        [
+          {
+            "node": "Merge Telegram Responses",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TelegramUser1": {
+      "main": [
+        [
+          {
+            "node": "Merge Telegram Responses",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "433279a5-a610-45ac-94ac-989af3bf9794",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0ac1140923834ce0a527d975b67b64fd23e8324ab2038ed7b8f27dfca1b242a0"
+  },
+  "id": "IL7AhArhqwKoKhmJ",
+  "tags": []
+}
