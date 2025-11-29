@@ -1,5 +1,5 @@
 // ⚙️ CONFIGURATION - Modify this line with your N8N URL
-const N8N_WEBHOOK_URL = 'https://n8n.ovh.synelia.tech/webhook/2c929d42-1270-4d11-a519-4ed0ca69465a';
+const N8N_WEBHOOK_URL = 'https://n8n.ovh.synelia.tech/webhook-test/2c929d42-1270-4d11-a519-4ed0ca69465a';
 
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', function () {
