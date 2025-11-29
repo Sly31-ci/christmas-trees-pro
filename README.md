@@ -35,25 +35,27 @@ Site vitrine professionnel pour entreprise de décoration de Noël et sapins. De
 ## 📁 Structure du projet
 
 ```
-magie-de-noel/
-├── index.html              # Page d'accueil
-├── gallery.html            # Galerie filtrable
-├── services.html           # Services et tarifs
-├── about.html              # À propos de l'entreprise
-├── contact.html            # Formulaire de contact
-├── blog.html               # Blog articles
-├── README.md               # Documentation
+christmas-trees-pro/
+├── index.html                  # Page d'accueil (LocalBusiness Schema)
+├── gallery.html                # Galerie filtrable
+├── services.html               # Services (Service Schema)
+├── about.html                  # À propos
+├── contact.html                # Formulaire contact (connecté n8n)
+├── blog.html                   # Blog + Newsletter (connecté n8n)
+├── robots.txt                  # SEO Crawler instructions
+├── sitemap.xml                 # SEO Site map
+├── Contact Form Telegram.json  # Export du workflow n8n
+├── README.md                   # Documentation
 ├── assets/
 │   ├── css/
-│   │   └── style.css       # Styles principaux
+│   │   └── style.css           # Styles complets
 │   ├── js/
-│   │   └── main.js         # Scripts JavaScript
-│   ├── images/
-│   │   ├── logo.svg        # Logo entreprise
-│   │   ├── hero.jpg        # Image hero
-│   │   └── gallery/        # Images galerie
+│   │   ├── main.js             # Script principal
+│   │   ├── gallery.js          # Logique galerie
+│   │   └── form-n8n.js         # Gestion formulaires -> Webhook n8n
+│   ├── images/                 # Images optimisées
 │   └── data/
-│       └── products.json   # Données produits
+│       └── products.json       # Base de données produits
 ```
 
 ## 🚀 Installation
