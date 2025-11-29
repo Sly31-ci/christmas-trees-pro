@@ -2,6 +2,8 @@
 
 Site vitrine professionnel pour entreprise de décoration de Noël et sapins. Design moderne, responsive et interactif.
 
+> **Note :** Ce projet intègre une automatisation complète avec **n8n** et **Telegram** pour la gestion des leads en temps réel.
+
 ## 📋 Table des matières
 
 - [Caractéristiques](#caractéristiques)
@@ -26,6 +28,9 @@ Site vitrine professionnel pour entreprise de décoration de Noël et sapins. De
 - ✅ SEO optimisé avec métadonnées et JSON-LD
 - ✅ Performance optimisée (lazy loading images)
 - ✅ Accessibilité (ARIA labels, navigation clavier)
+- ✅ **Automatisation n8n** : Réception des formulaires et envoi sur Telegram
+- ✅ **Détection de langue** : Adaptation automatique (EN/FR) selon la localisation
+- ✅ **SEO Technique** : Robots.txt, Sitemap.xml, JSON-LD Schemas
 
 ## 📁 Structure du projet
 
@@ -136,7 +141,16 @@ function updateCountdown() {
 
 - Déclenché sur clic CTA principal
 - 50 confettis avec couleurs aléatoires
+- 50 confettis avec couleurs aléatoires
 - Animation de chute physique
+
+### 7. Automatisation (n8n + Telegram)
+
+Le site est connecté à un workflow n8n pour traiter les formulaires :
+1. **Réception** : Le formulaire envoie les données au Webhook n8n
+2. **Validation** : n8n vérifie les données (email, téléphone)
+3. **Notification** : Un message formaté est envoyé instantanément sur le groupe Telegram de l'équipe
+4. **Logs** : Les soumissions sont enregistrées pour suivi
 
 ## 🎨 Personnalisation
 
@@ -259,7 +273,11 @@ vercel
   - DOM Manipulation
   - Event Listeners
 - **Google Fonts** : Playfair Display + Inter
+- **Google Fonts** : Playfair Display + Inter
 - **SVG** : Logo et icônes vectoriels
+- **Automation** : n8n (Workflow automation)
+- **Messaging** : Telegram Bot API
+- **Hosting** : GitHub Pages
 
 ## 📱 Compatibilité navigateurs
 

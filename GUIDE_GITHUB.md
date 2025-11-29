@@ -50,6 +50,57 @@ Cliquez sur le lien fourni (ex: `https://votre-pseudo.github.io/christmas-trees-
 
 ---
 
+## Étape 5 : Configurer le Nom de Domaine (Squarespace)
+
+Pour utiliser `christmas-tree-pros.com` au lieu de `github.io` :
+
+### 1. Acheter le domaine
+1. Allez sur [Squarespace Domains](https://account.squarespace.com/domains).
+2. Recherchez `christmas-tree-pros`.
+3. Achetez le domaine (.com recommandé).
+
+### 2. Configurer les DNS (Squarespace)
+1. Dans le tableau de bord Squarespace, cliquez sur le domaine.
+2. Allez dans **DNS Settings**.
+3. Supprimez les enregistrements par défaut (Parking).
+4. Ajoutez les enregistrements **A** pour GitHub Pages :
+   - Host: `@` -> `185.199.108.153`
+   - Host: `@` -> `185.199.109.153`
+   - Host: `@` -> `185.199.110.153`
+   - Host: `@` -> `185.199.111.153`
+5. Ajoutez un enregistrement **CNAME** :
+   - Host: `www` -> `VOTRE_PSEUDO.github.io`
+
+### 3. Lier à GitHub
+1. Dans votre repo GitHub, allez dans **Settings > Pages**.
+2. Sous **Custom domain**, entrez `christmas-tree-pros.com`.
+3. Cliquez sur **Save**.
+4. Cochez la case **Enforce HTTPS** (peut prendre jusqu'à 24h pour s'activer).
+
+---
+
+## Étape 6 : Connecter l'Automatisation (n8n + Telegram)
+
+Pour recevoir les demandes de contact sur Telegram :
+
+1. **Créer un Bot Telegram** :
+   - Parlez à `@BotFather` sur Telegram -> `/newbot`.
+   - Récupérez le **Token API**.
+   - Ajoutez le bot à votre groupe et récupérez le **Chat ID**.
+
+2. **Configurer n8n** :
+   - Importez le fichier `Contact Form Telegram.json` dans votre n8n.
+   - Configurez le nœud Telegram avec votre Token et Chat ID.
+   - Activez le workflow.
+   - Copiez l'URL du Webhook de production.
+
+3. **Mettre à jour le site** :
+   - Modifiez `assets/js/form-n8n.js`.
+   - Remplacez `N8N_WEBHOOK_URL` par votre nouvelle URL.
+   - Faites un commit et push.
+
+---
+
 ## 🔄 Mettre à jour le projet après modifications
 
 Chaque fois que vous modifiez votre site (texte, images, couleurs, etc.), vous devez suivre ces étapes pour envoyer les changements sur GitHub et mettre à jour votre site en ligne.

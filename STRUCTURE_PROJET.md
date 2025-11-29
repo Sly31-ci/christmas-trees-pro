@@ -5,28 +5,22 @@
 ```
 magie-de-noel/
 │
-├── index.html                  ✅ Page d'accueil avec hero, réalisations, services, témoignages
-├── gallery.html                ✅ Galerie filtrable avec modal produits
-├── services.html               ✅ Services détaillés, packs, FAQ
-├── about.html                  ✅ À propos, équipe, timeline, valeurs
-├── contact.html                ✅ Formulaire contact + carte Google Maps
-├── blog.html                   ✅ Articles blog (template simple)
-├── README.md                   ✅ Documentation complète
+├── index.html                  ✅ Page d'accueil (LocalBusiness Schema)
+├── gallery.html                ✅ Galerie filtrable
+├── services.html               ✅ Services (Service Schema)
+├── about.html                  ✅ À propos
+├── contact.html                ✅ Formulaire contact (connecté n8n)
+├── blog.html                   ✅ Blog + Newsletter (connecté n8n)
+├── robots.txt                  ✅ SEO Crawler instructions
+├── sitemap.xml                 ✅ SEO Site map
+├── Contact Form Telegram.json  ✅ Export du workflow n8n
+├── README.md                   ✅ Documentation
 │
 ├── assets/
 │   ├── css/
-│   │   └── style.css           ✅ Styles complets (variables CSS, responsive)
+│   │   └── style.css           ✅ Styles complets
 │   │
 │   ├── js/
-│   │   ├── main.js             ✅ Script principal (countdown, menu, animations)
-│   │   └── gallery.js          ✅ Script galerie (filtres, modal, lazy-load)
-│   │
-│   ├── images/
-│   │   ├── logo.svg            📝 À créer (ou utiliser le SVG inline dans le HTML)
-│   │   ├── hero.jpg            📝 À ajouter (image hero optionnelle)
-│   │   └── gallery/            📝 Dossier pour images galerie
-│   │       ├── sapin-1.jpg
-│   │       ├── interieur-1.jpg
 │   │       ├── exterieur-1.jpg
 │   │       └── ...
 │   │
@@ -55,6 +49,11 @@ magie-de-noel/
 
 ### Données (1)
 - **products.json** - 13 produits avec toutes les informations
+
+### SEO & Automation (3)
+- **robots.txt** : Instructions pour les robots d'indexation
+- **sitemap.xml** : Plan du site pour Google
+- **Contact Form Telegram.json** : Définition du workflow n8n (à importer dans n8n)
 
 ### Documentation (2)
 - **README.md** - Guide complet d'installation et utilisation
