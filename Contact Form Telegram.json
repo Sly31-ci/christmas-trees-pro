@@ -1,5 +1,4 @@
 {
-  "name": "Contact Form Telegram",
   "nodes": [
     {
       "parameters": {
@@ -141,7 +140,6 @@
       }
     }
   ],
-  "pinData": {},
   "connections": {
     "Webhook": {
       "main": [
@@ -238,15 +236,9 @@
       ]
     }
   },
-  "active": true,
-  "settings": {
-    "executionOrder": "v1"
-  },
-  "versionId": "433279a5-a610-45ac-94ac-989af3bf9794",
+  "pinData": {},
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "0ac1140923834ce0a527d975b67b64fd23e8324ab2038ed7b8f27dfca1b242a0"
-  },
-  "id": "IL7AhArhqwKoKhmJ",
-  "tags": []
+  }
 }
