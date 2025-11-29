@@ -127,14 +127,21 @@ function createGalleryItem(product, index) {
         ? product.images[0]
         : `data:image/svg+xml,%3Csvg width='400' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Crect fill='%232D5016' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='20' fill='%23D4AF37' text-anchor='middle' dominant-baseline='middle'%3E${product.name}%3C/text%3E%3C/svg%3E`;
 
-    item.innerHTML = `
-        <img src="${imageUrl}" alt="${product.name}" loading="lazy">
-        <div class="gallery-item-info">
-            <h3>${product.name}</h3>
-            <!-- Price hidden - contact us for a quote -->
-            <!-- <p class="gallery-item-price">${product.price}€</p> -->
-        </div>
-    `;
+    // 🔒 SECURITY: Use safe DOM manipulation instead of innerHTML
+    const img = document.createElement('img');
+    img.src = imageUrl;
+    img.alt = window.SecurityUtils ? window.SecurityUtils.sanitizeText(product.name) : product.name;
+    img.loading = 'lazy';
+
+    const infoDiv = document.createElement('div');
+    infoDiv.className = 'gallery-item-info';
+
+    const h3 = document.createElement('h3');
+    h3.textContent = product.name; // textContent is XSS-safe
+
+    infoDiv.appendChild(h3);
+    item.appendChild(img);
+    item.appendChild(infoDiv);
 
     // Add inline styles for info
     const style = document.createElement('style');
@@ -189,11 +196,12 @@ function openProductModal(product) {
     const modal = document.getElementById('productModal');
     if (!modal) return;
 
-    // Fill modal
-    document.getElementById('modalTitle').textContent = product.name;
-    document.getElementById('modalDescription').textContent = product.description;
-    // Price hidden - clients must contact us for a personalized quote
-    // document.getElementById('modalPrice').textContent = `From ${product.price}€`;
+    // 🔒 SECURITY: Sanitize product data
+    const titleEl = document.getElementById('modalTitle');
+    const descEl = document.getElementById('modalDescription');
+
+    if (titleEl) titleEl.textContent = product.name;
+    if (descEl) descEl.textContent = product.description;
 
     // Image or Video
     const modalImage = document.getElementById('modalImage');
@@ -221,12 +229,15 @@ function openProductModal(product) {
         // }
     }
 
-    // Features
+    // Features - 🔒 SECURITY: Sanitize each feature
     const featuresContainer = document.getElementById('modalFeatures');
     if (featuresContainer && product.features) {
-        featuresContainer.innerHTML = product.features
-            .map(feature => `<li>✓ ${feature}</li>`)
-            .join('');
+        featuresContainer.innerHTML = ''; // Clear first
+        product.features.forEach(feature => {
+            const li = document.createElement('li');
+            li.textContent = `✓ ${feature}`; // textContent is XSS-safe
+            featuresContainer.appendChild(li);
+        });
     }
 
     // Open modal

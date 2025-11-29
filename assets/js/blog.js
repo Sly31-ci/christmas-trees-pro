@@ -747,16 +747,22 @@ function openBlogModal(articleId) {
     const modalImage = document.getElementById('modalBlogImage');
     const modalContent = document.getElementById('modalBlogContent');
 
-    // Fill content
+    // Fill content - 🔒 SECURITY: Sanitize all content
     modalCategory.textContent = article.category;
     modalTitle.textContent = article.title;
-    modalMeta.innerHTML = `
+
+    // 🔒 SECURITY: Sanitize meta HTML with DOMPurify
+    const metaHTML = `
         <span class="blog-meta-item">${article.date}</span>
         <span class="blog-meta-item">${article.time}</span>
     `;
+    modalMeta.innerHTML = window.SecurityUtils ? window.SecurityUtils.sanitizeHTML(metaHTML) : metaHTML;
+
     modalImage.src = article.image;
     modalImage.alt = article.title;
-    modalContent.innerHTML = article.content;
+
+    // 🔒 SECURITY: Sanitize article content with DOMPurify
+    modalContent.innerHTML = window.SecurityUtils ? window.SecurityUtils.sanitizeHTML(article.content) : article.content;
 
     // Show modal
     modal.classList.add('active');

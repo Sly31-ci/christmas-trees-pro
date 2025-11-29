@@ -1,6 +1,15 @@
 // ⚙️ CONFIGURATION - Modify this line with your N8N URL
 const N8N_WEBHOOK_URL = 'https://n8n.ovh.synelia.tech/webhook-test/2c929d42-1270-4d11-a519-4ed0ca69465a';
 
+// 🔒 SECURITY CONFIGURATION
+// Set your reCAPTCHA site key here (get it from https://www.google.com/recaptcha/admin)
+// TODO: Uncomment and configure when ready to use reCAPTCHA
+// window.RECAPTCHA_SITE_KEY = 'YOUR_RECAPTCHA_SITE_KEY_HERE';
+
+// Rate limiting: max 3 submissions per minute
+const RATE_LIMIT_MAX = 3;
+const RATE_LIMIT_WINDOW = 60000; // 1 minute
+
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -11,40 +20,106 @@ document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('contactForm');
 
     if (form) {
+        // Initialize rate limiter for contact form
+        const contactRateLimiter = new window.SecurityUtils.RateLimiter(
+            'contact_form',
+            RATE_LIMIT_MAX,
+            RATE_LIMIT_WINDOW
+        );
+
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
 
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
+
+            // 🔒 SECURITY: Check rate limit
+            if (!contactRateLimiter.isAllowed()) {
+                const waitTime = Math.ceil(contactRateLimiter.getTimeUntilReset() / 1000);
+                alert(`⚠️ Too many submissions. Please wait ${waitTime} seconds before trying again.`);
+                return;
+            }
+
             submitBtn.disabled = true;
             submitBtn.textContent = '⏳ Sending...';
             submitBtn.style.opacity = '0.6';
 
-            // 📦 Collect data
+            // 🔒 SECURITY: Sanitize and validate inputs
+            const firstName = window.SecurityUtils.sanitizeName(document.getElementById('firstName').value);
+            const lastName = window.SecurityUtils.sanitizeName(document.getElementById('lastName').value);
+            const email = window.SecurityUtils.sanitizeEmail(document.getElementById('email').value);
+            const phone = window.SecurityUtils.sanitizePhone(document.getElementById('phone').value);
+            const address = window.SecurityUtils.sanitizeTextWithLimit(document.getElementById('address').value || '', 200);
+            const service = window.SecurityUtils.sanitizeText(document.getElementById('service').value);
+            const date = document.getElementById('date').value; // Date input is safe
+            const message = window.SecurityUtils.sanitizeTextWithLimit(document.getElementById('message').value || '', 1000);
+            const newsletter = document.getElementById('newsletter').checked;
+
+            // Validate required fields
+            if (!firstName || !lastName) {
+                alert('❌ Please enter your full name.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                submitBtn.style.opacity = '1';
+                return;
+            }
+
+            if (!email) {
+                alert('❌ Please enter a valid email address.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                submitBtn.style.opacity = '1';
+                return;
+            }
+
+            if (!phone) {
+                alert('❌ Please enter a valid phone number.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                submitBtn.style.opacity = '1';
+                return;
+            }
+
+            // 📦 Collect sanitized data
             const formData = {
-                formType: "reservation", // 🔹 TAG to identify form
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                address: document.getElementById('address').value || '',
-                service: document.getElementById('service').value,
-                date: document.getElementById('date').value,
-                message: document.getElementById('message').value || '',
-                newsletter: document.getElementById('newsletter').checked
+                formType: "reservation",
+                firstName,
+                lastName,
+                email,
+                phone,
+                address,
+                service,
+                date,
+                message,
+                newsletter
             };
 
             try {
+                // 🔒 SECURITY: Get reCAPTCHA token
+                // TODO: Uncomment when reCAPTCHA is configured
+                // const recaptchaToken = await window.SecurityUtils.executeRecaptcha('contact_form');
+                const recaptchaToken = null; // Temporary: no reCAPTCHA for now
+
+                // 🔒 SECURITY: Add security metadata
+                const secureData = await window.SecurityUtils.addSecurityMetadata({
+                    ...formData,
+                    recaptchaToken
+                });
+
                 const response = await fetch(N8N_WEBHOOK_URL, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: JSON.stringify(secureData)
                 });
 
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
                 alert('✅ Votre demande a été envoyée avec succès !');
                 form.reset();
+                contactRateLimiter.reset(); // Reset on success
 
             } catch (error) {
                 alert("❌ Erreur lors de l’envoi du formulaire.\nVeuillez réessayer.");
@@ -66,16 +141,29 @@ document.addEventListener('DOMContentLoaded', function () {
     const newsletterForm = document.querySelector('.newsletter-form');
 
     if (newsletterForm) {
+        // Initialize rate limiter for newsletter
+        const newsletterRateLimiter = new window.SecurityUtils.RateLimiter(
+            'newsletter_form',
+            RATE_LIMIT_MAX,
+            RATE_LIMIT_WINDOW
+        );
+
         newsletterForm.addEventListener('submit', async function (e) {
             e.preventDefault();
 
-            /* const emailInput = this.querySelector('input[type="email"]');
-            const email = emailInput.value; */
+            // 🔒 SECURITY: Check rate limit
+            if (!newsletterRateLimiter.isAllowed()) {
+                const waitTime = Math.ceil(newsletterRateLimiter.getTimeUntilReset() / 1000);
+                alert(`⚠️ Too many submissions. Please wait ${waitTime} seconds before trying again.`);
+                return;
+            }
 
             const emailInput = this.querySelector('input[name="email"]');
-            const email = emailInput ? emailInput.value.trim() : '';
+            const rawEmail = emailInput ? emailInput.value.trim() : '';
 
-            // Validate email is not empty
+            // 🔒 SECURITY: Sanitize and validate email
+            const email = window.SecurityUtils.sanitizeEmail(rawEmail);
+
             if (!email) {
                 alert("⚠️ Veuillez entrer une adresse email valide.");
                 return;
@@ -94,16 +182,31 @@ document.addEventListener('DOMContentLoaded', function () {
             };
 
             try {
+                // 🔒 SECURITY: Get reCAPTCHA token
+                // TODO: Uncomment when reCAPTCHA is configured
+                // const recaptchaToken = await window.SecurityUtils.executeRecaptcha('newsletter');
+                const recaptchaToken = null; // Temporary: no reCAPTCHA for now
+
+                // 🔒 SECURITY: Add security metadata
+                const securePayload = await window.SecurityUtils.addSecurityMetadata({
+                    ...payload,
+                    recaptchaToken
+                });
+
                 const response = await fetch(N8N_WEBHOOK_URL, {
                     method: 'POST',
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(payload)
+                    headers: {
+                        "Content-Type": "application/json",
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: JSON.stringify(securePayload)
                 });
 
                 if (!response.ok) throw new Error("Newsletter submission failed");
 
                 alert("🎉 Merci ! Vous êtes maintenant inscrit à notre newsletter.");
                 newsletterForm.reset();
+                newsletterRateLimiter.reset(); // Reset on success
 
             } catch (error) {
                 alert("❌ Impossible de vous inscrire pour le moment.\nVeuillez réessayer.");

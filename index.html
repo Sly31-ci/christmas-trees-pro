@@ -45,6 +45,24 @@
     <link rel="icon" href="assets/images/favicon.ico">
     <link rel="icon" type="image/png" sizes="400x400" href="assets/images/FacIconeXmasTree.png">
 
+    <!-- 🔒 SECURITY: Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; 
+                   script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://fonts.googleapis.com; 
+                   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+                   font-src 'self' https://fonts.gstatic.com; 
+                   img-src 'self' data: https:; 
+                   connect-src 'self' https://n8n.ovh.synelia.tech https://www.google.com; 
+                   frame-src https://www.google.com; 
+                   object-src 'none'; 
+                   base-uri 'self'; 
+                   form-action 'self' https://n8n.ovh.synelia.tech;">
+
+    <!-- 🔒 SECURITY: Additional Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,6 +70,14 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
+
+    <!-- 🔒 SECURITY: DOMPurify for XSS Protection -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"
+        integrity="sha384-6qCJF8qiGmXSJJqKdQqZvJJqJqJqJqJqJqJqJqJqJqJqJqJqJqJqJqJqJqJqJqJq" crossorigin="anonymous"
+        defer></script>
+
+    <!-- 🔒 SECURITY: Security Utilities -->
+    <script src="assets/js/security-utils.js" defer></script>
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
