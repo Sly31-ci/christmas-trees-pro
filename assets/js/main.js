@@ -324,7 +324,6 @@ newsletterForms.forEach(form => {
         }
 
         // Simulate API call
-        console.log('Newsletter subscription:', email);
 
         // Show success message
         const successMsg = document.createElement('div');
@@ -355,8 +354,6 @@ function debounce(func, wait) {
 
 // === ANALYTICS (Placeholder) ===
 function trackEvent(eventName, eventData = {}) {
-    console.log('Analytics Event:', eventName, eventData);
-
     // In production, integrate with Google Analytics, Mixpanel, etc.
     // Example: gtag('event', eventName, eventData);
 }
@@ -399,9 +396,7 @@ skipLink.addEventListener('blur', () => {
 });
 document.body.insertBefore(skipLink, document.body.firstChild);
 
-// === Console Message ===
-console.log('%c🎄 Christmas Tree Pros 🎄', 'color: #2D5016; font-size: 20px; font-weight: bold;');
-console.log('%cSite developed with ❤️ for the holiday season', 'color: #C41E3A; font-size: 12px;');
+
 
 // Export functions if using modules
 if (typeof module !== 'undefined' && module.exports) {

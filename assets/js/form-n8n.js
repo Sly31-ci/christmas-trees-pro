@@ -3,133 +3,115 @@ const N8N_WEBHOOK_URL = 'https://n8n.ovh.synelia.tech/webhook/2c929d42-1270-4d11
 
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('🔄 Initializing N8N form...');
+
+    /* ============================================================
+        🟦 1. MAIN CONTACT FORM (#contactForm)
+    ============================================================ */
 
     const form = document.getElementById('contactForm');
 
-    if (!form) {
-        console.error('❌ Form #contactForm not found!');
-        return;
-    }
+    if (form) {
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
 
-    // 📝 Form handling
-    form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        console.log('📤 Submitting form...');
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Sending...';
+            submitBtn.style.opacity = '0.6';
 
-        // 🔘 Submit button
-        const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.disabled = true;
-        submitBtn.textContent = '⏳ Sending...';
-        submitBtn.style.opacity = '0.6';
+            // 📦 Collect data
+            const formData = {
+                formType: "reservation", // 🔹 TAG to identify form
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value || '',
+                service: document.getElementById('service').value,
+                date: document.getElementById('date').value,
+                message: document.getElementById('message').value || '',
+                newsletter: document.getElementById('newsletter').checked
+            };
 
-        // 📦 Collect data
-        const formData = {
-            firstName: document.getElementById('firstName').value,
-            lastName: document.getElementById('lastName').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            address: document.getElementById('address').value || '',
-            service: document.getElementById('service').value,
-            date: document.getElementById('date').value,
-            message: document.getElementById('message').value || '',
-            newsletter: document.getElementById('newsletter').checked
-        };
-
-        console.log('📦 Data collected:', formData);
-
-        try {
-            // 📤 Send to N8N
-            console.log('🌐 Sending to:', N8N_WEBHOOK_URL);
-
-            const response = await fetch(N8N_WEBHOOK_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-
-            console.log('📡 HTTP Response:', response.status, response.statusText);
-
-            // Check if HTTP request succeeded
-            if (!response.ok) {
-                throw new Error(`HTTP Error ${response.status}: ${response.statusText}`);
-            }
-
-            // Attempt to parse JSON response
-            let result;
             try {
-                result = await response.json();
-                console.log('📦 JSON Response:', result);
-            } catch (jsonError) {
-                // If not JSON, consider success if status 200
-                console.log('⚠️ Non-JSON response, but status OK');
-                result = { success: true };
-            }
+                const response = await fetch(N8N_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
 
-            // Check success (multiple formats possible)
-            const isSuccess = result.success === true ||
-                result.status === 'success' ||
-                result.ok === true ||
-                response.status === 200;
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
-            if (isSuccess) {
-                // ✅ Success!
-                console.log('✅ Form sent successfully!');
-
-                // Show toast if available
-                const toast = document.getElementById('successToast');
-                if (toast) {
-                    toast.classList.add('show');
-                    setTimeout(() => toast.classList.remove('show'), 5000);
-                } else {
-                    // Otherwise, show alert
-                    const message = result.message || 'Your message has been sent successfully!';
-                    alert('✅ ' + message);
-                }
-
-                // Reset form
+                alert('✅ Votre demande a été envoyée avec succès !');
                 form.reset();
 
-                // 🎉 Confetti (if function exists)
-                if (typeof createConfetti === 'function') {
-                    createConfetti();
-                }
-            } else {
-                throw new Error(result.message || result.error || 'Unknown error');
+            } catch (error) {
+                alert("❌ Erreur lors de l’envoi du formulaire.\nVeuillez réessayer.");
+                console.error(error);
+
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                submitBtn.style.opacity = '1';
             }
+        });
+    }
 
-        } catch (error) {
-            // ❌ Error
-            console.error('❌ Detailed error:', error);
-            console.error('Error type:', error.name);
-            console.error('Error message:', error.message);
 
-            let errorMessage = '❌ An error occurred while sending.';
+    /* ============================================================
+        🟩 2. NEWSLETTER FORM (.newsletter-form)
+    ============================================================ */
 
-            if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
-                errorMessage += '\n\n⚠️ The N8N server seems inaccessible. Check:\n' +
-                    '1. The webhook URL\n' +
-                    '2. Your internet connection\n' +
-                    '3. N8N server CORS settings';
-            } else {
-                errorMessage += '\n\n' + error.message;
+    const newsletterForm = document.querySelector('.newsletter-form');
+
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const emailInput = this.querySelector('input[type="email"]');
+            const email = emailInput.value;
+
+            const button = this.querySelector('button');
+            const original = button.textContent;
+
+            button.disabled = true;
+            button.textContent = "⏳ Sending...";
+
+            // 📦 Prepare data
+            const payload = {
+                formType: "newsletter",  // 🔹 TAG to identify newsletter form
+                email: email
+            };
+
+            try {
+                const response = await fetch(N8N_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) throw new Error("Newsletter submission failed");
+
+                alert("🎉 Merci ! Vous êtes maintenant inscrit à notre newsletter.");
+                newsletterForm.reset();
+
+            } catch (error) {
+                alert("❌ Impossible de vous inscrire pour le moment.\nVeuillez réessayer.");
+                console.error(error);
+
+            } finally {
+                button.disabled = false;
+                button.textContent = original;
             }
+        });
+    }
 
-            errorMessage += '\n\nPlease try again or contact us by phone at +1(703)8562590';
 
-            alert(errorMessage);
-        } finally {
-            // Re-enable button
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
-            submitBtn.style.opacity = '1';
-        }
-    });
+    /* ============================================================
+        🟧 3. REAL-TIME VALIDATION + DATE LIMIT
+    ============================================================ */
 
-    // ✅ Real-time validation
     document.querySelectorAll('.form-control').forEach(input => {
         input.addEventListener('blur', function () {
             if (this.hasAttribute('required') && !this.value.trim()) {
@@ -146,11 +128,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // 📅 Minimal date = today
     const dateInput = document.getElementById('date');
     if (dateInput) {
         dateInput.min = new Date().toISOString().split('T')[0];
     }
-
-    console.log('✅ N8N Form initialized successfully!');
 });
