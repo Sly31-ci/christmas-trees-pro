@@ -309,35 +309,7 @@ window.validateEmail = validateEmail;
 window.validatePhone = validatePhone;
 window.createConfetti = createConfetti;
 
-// === NEWSLETTER SUBSCRIPTION ===
-const newsletterForms = document.querySelectorAll('.newsletter-form');
-newsletterForms.forEach(form => {
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
 
-        const emailInput = form.querySelector('input[type="email"]');
-        const email = emailInput.value;
-
-        if (!validateEmail(email)) {
-            alert('Please enter a valid email');
-            return;
-        }
-
-        // Simulate API call
-
-        // Show success message
-        const successMsg = document.createElement('div');
-        successMsg.textContent = '✓ Subscription successful!';
-        successMsg.style.cssText = 'color: var(--color-accent); font-weight: 600; margin-top: 0.5rem;';
-        form.appendChild(successMsg);
-
-        form.reset();
-
-        setTimeout(() => {
-            successMsg.remove();
-        }, 3000);
-    });
-});
 
 // === PERFORMANCE: Debounce function ===
 function debounce(func, wait) {

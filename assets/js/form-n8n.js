@@ -69,8 +69,17 @@ document.addEventListener('DOMContentLoaded', function () {
         newsletterForm.addEventListener('submit', async function (e) {
             e.preventDefault();
 
-            const emailInput = this.querySelector('input[type="email"]');
-            const email = emailInput.value;
+            /* const emailInput = this.querySelector('input[type="email"]');
+            const email = emailInput.value; */
+
+            const emailInput = this.querySelector('input[name="email"]');
+            const email = emailInput ? emailInput.value.trim() : '';
+
+            // Validate email is not empty
+            if (!email) {
+                alert("⚠️ Veuillez entrer une adresse email valide.");
+                return;
+            }
 
             const button = this.querySelector('button');
             const original = button.textContent;
