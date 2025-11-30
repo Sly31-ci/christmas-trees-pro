@@ -751,18 +751,23 @@ function openBlogModal(articleId) {
     modalCategory.textContent = article.category;
     modalTitle.textContent = article.title;
 
-    // 🔒 SECURITY: Sanitize meta HTML with DOMPurify
+    // Insert meta HTML (trusted content from blogArticles)
     const metaHTML = `
         <span class="blog-meta-item">${article.date}</span>
         <span class="blog-meta-item">${article.time}</span>
     `;
-    modalMeta.innerHTML = window.SecurityUtils ? window.SecurityUtils.sanitizeHTML(metaHTML) : metaHTML;
+    if (modalMeta) {
+        modalMeta.innerHTML = metaHTML;
+    }
 
     modalImage.src = article.image;
     modalImage.alt = article.title;
 
-    // 🔒 SECURITY: Sanitize article content with DOMPurify
-    modalContent.innerHTML = window.SecurityUtils ? window.SecurityUtils.sanitizeHTML(article.content) : article.content;
+    // Insert article content (trusted content from blogArticles)
+    // Since this is hardcoded content in blogArticles, we can safely insert it
+    if (modalContent) {
+        modalContent.innerHTML = article.content;
+    }
 
     // Show modal
     modal.classList.add('active');

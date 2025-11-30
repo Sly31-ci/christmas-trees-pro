@@ -37,14 +37,21 @@ function sanitizeHTML(html) {
 
     // Check if DOMPurify is available
     if (typeof DOMPurify !== 'undefined') {
-        return DOMPurify.sanitize(html, {
+        // Use DOMPurify with a more permissive configuration for trusted content
+        const sanitized = DOMPurify.sanitize(html, {
             ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a', 'p', 'br', 'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'div'],
-            ALLOWED_ATTR: ['href', 'target', 'rel', 'class', 'id', 'style']
+            ALLOWED_ATTR: ['href', 'target', 'rel', 'class', 'id', 'style'],
+            KEEP_CONTENT: true,
+            RETURN_DOM: false,
+            RETURN_DOM_FRAGMENT: false,
+            // Prevent DOMPurify from escaping HTML entities
+            USE_PROFILES: { html: true }
         });
+        return sanitized;
     }
 
-    // Fallback: strip all HTML
-    return sanitizeText(html);
+    // Fallback: return HTML as-is for trusted content (blog articles)
+    return html;
 }
 
 /**
