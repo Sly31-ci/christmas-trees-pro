@@ -388,7 +388,7 @@ npx http-server -p 8000
 **Tester la sécurité :**
 ```bash
 # Après déploiement, vérifier les headers
-curl -I https://sly31-ci.github.io/christmas-trees-pro/
+curl -I https://www.christmastreespros.com/
 
 # Devrait afficher :
 # X-Frame-Options: DENY

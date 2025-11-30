@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://sly31-ci.github.io/christmas-trees-pro/sitemap.xml
+Sitemap: https://www.christmastreespros.com/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 1
