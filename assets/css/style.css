@@ -2321,13 +2321,15 @@ select.form-control {
 .modal-info {
     display: flex;
     flex-direction: row;
-    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
     flex-wrap: wrap;
+    padding-top: 1.5rem;
 }
 
 .modal-info .btn-primary {
     margin-right: 0;
-    align-self: flex-start;
 }
 
 .modal-info .whatsapp-btn {
@@ -2336,20 +2338,20 @@ select.form-control {
     white-space: nowrap;
     width: auto;
     min-width: auto;
-    align-self: flex-start;
 }
 
 .modal-info .btn-primary,
 .modal-info .whatsapp-btn {
-    margin-top: 0.5rem;
+    margin-top: 0;
 }
 
 @media (max-width: 768px) {
 
     .modal-info .btn-primary,
     .modal-info .whatsapp-btn {
-        width: 100%;
-        align-self: stretch;
+        width: auto;
+        flex: 1;
+        min-width: 120px;
         justify-content: center;
     }
 }
