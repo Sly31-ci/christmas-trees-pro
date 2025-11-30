@@ -1745,8 +1745,8 @@ select.form-control {
 }
 
 .whatsapp-btn {
-    background: white;
-    color: #25D366;
+    background: #25D366;
+    color: white;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
@@ -1754,7 +1754,7 @@ select.form-control {
 }
 
 .whatsapp-btn:hover {
-    background: #f0f0f0;
+    background: #128C7E;
 }
 
 @media (max-width: 768px) {
@@ -2314,5 +2314,40 @@ select.form-control {
         max-width: none;
         justify-content: center;
         padding: 0.75rem 1.5rem;
+    }
+}
+
+/* === GALLERY MODAL BUTTONS === */
+.modal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.modal-info .btn-primary {
+    margin-right: 0;
+    align-self: flex-start;
+}
+
+.modal-info .whatsapp-btn {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    white-space: nowrap;
+    width: auto;
+    min-width: auto;
+    align-self: flex-start;
+}
+
+.modal-info .btn-primary,
+.modal-info .whatsapp-btn {
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .modal-info .btn-primary,
+    .modal-info .whatsapp-btn {
+        width: 100%;
+        align-self: stretch;
+        justify-content: center;
     }
 }

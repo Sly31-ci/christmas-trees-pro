@@ -413,15 +413,6 @@ if (!document.getElementById('modal-styles')) {
             color: #6b7280;
         }
         
-        .whatsapp-btn {
-            background: #25D366;
-            color: white;
-        }
-        
-        .whatsapp-btn:hover {
-            background: #128C7E;
-        }
-        
         @media (max-width: 768px) {
             .modal-body {
                 grid-template-columns: 1fr;
