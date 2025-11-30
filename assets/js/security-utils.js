@@ -38,8 +38,8 @@ function sanitizeHTML(html) {
     // Check if DOMPurify is available
     if (typeof DOMPurify !== 'undefined') {
         return DOMPurify.sanitize(html, {
-            ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a', 'p', 'br', 'ul', 'ol', 'li'],
-            ALLOWED_ATTR: ['href', 'target', 'rel']
+            ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a', 'p', 'br', 'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'div'],
+            ALLOWED_ATTR: ['href', 'target', 'rel', 'class', 'id', 'style']
         });
     }
 
