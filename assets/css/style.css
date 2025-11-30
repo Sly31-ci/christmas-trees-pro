@@ -2320,8 +2320,9 @@ select.form-control {
 /* === GALLERY MODAL BUTTONS === */
 .modal-info {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .modal-info .btn-primary {
@@ -2344,6 +2345,7 @@ select.form-control {
 }
 
 @media (max-width: 768px) {
+
     .modal-info .btn-primary,
     .modal-info .whatsapp-btn {
         width: 100%;
