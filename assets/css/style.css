@@ -2186,6 +2186,16 @@ select.form-control {
 
 .blog-modal-header .blog-meta {
     justify-content: flex-start;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.blog-modal-header .blog-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
 }
 
 .blog-modal-image {
@@ -2206,6 +2216,11 @@ select.form-control {
     margin-top: 2rem;
     margin-bottom: 1rem;
     font-size: 1.8rem;
+    line-height: 1.3;
+}
+
+.blog-modal-text h3:first-child {
+    margin-top: 0;
 }
 
 .blog-modal-text h4 {
@@ -2218,6 +2233,11 @@ select.form-control {
 .blog-modal-text p {
     margin-bottom: 1.5rem;
     color: var(--color-gray);
+    line-height: 1.8;
+}
+
+.blog-modal-text p:first-of-type {
+    margin-top: 0;
 }
 
 .blog-modal-text ul,
@@ -2243,14 +2263,23 @@ select.form-control {
     background: var(--color-light-gray);
     border-top: 2px solid var(--color-accent);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.blog-modal-footer .btn-primary {
+    margin-right: 0;
 }
 
 .blog-modal-footer .whatsapp-btn {
-    font-size: 1.1rem;
-    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    white-space: nowrap;
+    width: auto;
+    min-width: auto;
 }
 
 @media (max-width: 768px) {
@@ -2281,8 +2310,9 @@ select.form-control {
     }
 
     .blog-modal-footer .whatsapp-btn {
-        width: 100%;
-        max-width: 300px;
+        width: auto;
+        max-width: none;
         justify-content: center;
+        padding: 0.75rem 1.5rem;
     }
 }
