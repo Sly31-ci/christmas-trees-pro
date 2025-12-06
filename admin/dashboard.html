@@ -489,7 +489,7 @@
             // Prepare data
             const formData = {
                 clientName: document.getElementById('clientName').value.trim(),
-                clientPhone: document.getElementById('clientPhone').value,
+                clientPhone: document.getElementById('clientPhone').value.replace(/\s/g, ''), // Enlever les espaces
                 clientEmail: document.getElementById('clientEmail').value.trim(),
                 clientAddress: document.getElementById('clientAddress').value.trim(),
                 serviceAmount: parseFloat(document.getElementById('serviceAmount').value),
